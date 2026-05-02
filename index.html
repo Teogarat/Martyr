@@ -99,7 +99,7 @@
       </div>
       <div class="skill">
         <div class="name">[ ⚜️ ] Регенерация <span style="color:var(--muted);font-size:12px">(пассивка)</span></div>
-        <div class="desc">Постоянно восстанавливает здоровье. При 1–10% ХП регенерация 5%. Растёт нелинейно: при 95–100% ХП регенерация 55%.</div>
+        <div class="desc">Постоянно восстанавливает здоровье. При 1–10% ХП регенерация 10%. Линейно растёт: при 95–100% ХП регенерация 50%.</div>
       </div>
       <div class="skill">
         <div class="name">[ ⚜️ ] Кровавый удар <span style="color:var(--muted);font-size:12px">(откат: 0, стоим.: 20% тек. ХП)</span></div>
@@ -624,20 +624,15 @@ function doForeignBlood(logs){
 }
 
 function doCatharsis(logs){
-  prepareBlock();
   const rawDmg = round(state.totalHealAmount * 6 * state.player.multiplier);
   const costMult = getCostMult();
   const cost   = round(state.player.hp * 0.60 * costMult);
   state.player.hp = Math.max(1, state.player.hp - cost);
-  if(sk('parry') && Math.random() < 0.25){
-    logs.push('🏃‍♀️ Парирование: Некродион парировал Катарсис!');
-    return 0;
-  }
+  // Катарсис игнорирует все умения Некродиона — pureDmg напрямую
   const dealt = pureDmg(state.enemy, rawDmg);
   let line = '[ ⚜️ ] Катарсис — стоимость: ' + cost + ' ХП' + (costMult>1?' (×2 Нечестное начало!)':'');
-  line += '\n  💥 Урон = накоп.хил ' + state.totalHealAmount + ' × 5 × ' + state.player.multiplier.toFixed(3) + ' = ' + rawDmg;
-  if(dealt < rawDmg) line += ' (срезан умениями Некродиона до ' + dealt + ')';
-  line += '\n  ✅ Нанесено: ' + dealt;
+  line += '\n  💥 Урон = накоп.хил ' + state.totalHealAmount + ' × 6 × ' + state.player.multiplier.toFixed(3) + ' = ' + rawDmg;
+  line += '\n  ✅ Нанесено: ' + dealt + ' (игнор всех умений)';
   logs.push(line);
   return dealt;
 }
