@@ -283,7 +283,7 @@ function buildDerived(p){
 
 function regenPercent(hpFrac){
   const f = clamp(hpFrac, 0, 1);
-  return 0 + Math.pow(f, 2) * 0;
+  return 0.05 + Math.pow(1 - f, 2) * 0.30;
 }
 
 // Читаем активные умения Некродиона
