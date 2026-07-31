@@ -226,29 +226,29 @@
       <h2 class="title">Умения Мученика</h2>
       <div class="skill">
         <div class="name">[ ⚜️ ] Обет страдания <span style="color:var(--muted);font-size:12px">(пассивка)</span></div>
-        <div class="desc">Активные навыки расходуют здоровье вместо маны и стамины. Навык не может уменьшить здоровье ниже 1. Если здоровья недостаточно, применить его нельзя. Прокачка: сила увеличивается на 1% за уровень.</div>
+        <div class="desc">Активные навыки расходуют здоровье вместо маны и стамины. Навык не может уменьшить здоровье ниже 1. Если здоровья недостаточно, применить его нельзя. Прокачка: сила увеличивается на 2% за уровень.</div>
       </div>
       <div class="skill">
         <div class="name">[ ⚜️ ] Оковы греха <span style="color:var(--muted);font-size:12px">(пассивка)</span></div>
-        <div class="desc">Три атакующих навыка накладывают Цепь Алчности, Цепь Гнева и Цепь Гордыни на 5 ходов. Повторное наложение обновляет длительность. Все три цепи создают «Грешника» на 2 хода. При его наложении враг не может восстанавливать здоровье до конца своего следующего хода. После завершения «Грешника» цепи исчезают. Прокачка: урон «Очищения болью» +0,2% за уровень.</div>
+        <div class="desc">Оружие и броня дают дополнительные эффекты, но их урон и броня всегда равны 0. Прокачка: урон «Очищения болью» увеличен на 0,2% за уровень.</div>
       </div>
       <div class="skill">
         <div class="name greed">[ ⚜️ ] Алчная десятина <span style="color:var(--muted);font-size:12px">(откат: 1, цена: 6% макс. ХП)</span></div>
-        <div class="desc">Три последовательных физических удара по 0,25 физической атаки. Накладывает Цепь Алчности. Пока цепь действует, она даёт 2% регенерации максимального ХП за ход.</div>
+        <div class="desc">Три последовательных физических удара по 0,25 физической атаки. Накладывает грех Алчности на 5 ходов. Алчность заставляет противника проводить только атакующие действия, а его броня и щиты считаются равными нулю на 2 хода. Накладывает на Мученика 1% регенерации ХП до конца действия цепи.</div>
       </div>
       <div class="skill">
         <div class="name wrath">[ ⚜️ ] Праведный гнев <span style="color:var(--muted);font-size:12px">(откат: 2, цена: 10% макс. ХП)</span></div>
-        <div class="desc">Тяжёлый удар на 1,0 физической атаки. Если уже есть Цепь Алчности, следом наносится дополнительный удар на 0,2 физической атаки. Накладывает Цепь Гнева. Пока цепь действует, она даёт 4% регенерации максимального ХП за ход.</div>
+        <div class="desc">Мученик обрушивает на противника тяжёлый удар, нанося физический урон: физическая атака × 1,2. Накладывает грех Гнева на 5 ходов. Гнев заставляет противника впасть в ярость: он наносит на 10% больше урона на 1 ход, но атаки по нему сильнее на 15% на 2 хода. Накладывает на Мученика 2% регенерации ХП до конца действия цепи.</div>
       </div>
       <div class="skill">
         <div class="name pride">[ ⚜️ ] Приговор гордыни <span style="color:var(--muted);font-size:12px">(откат: 3, цена: 14% макс. ХП)</span></div>
-        <div class="desc">Пробивающий удар на 1,1 физической атаки. Если уже есть Цепи Алчности и Гнева, наносится дополнительный удар на 0,3 физической атаки. Навык игнорирует 50% физической брони. Накладывает Цепь Гордыни. Пока цепь действует, она даёт 4% регенерации максимального ХП за ход.</div>
+        <div class="desc">Мученик пробивает противника насквозь, нанося физический урон: физическая атака × 1,3 и накладывая кровотечение на 10% от физической атаки с учётом крита. Накладывает грех Гордыни на 5 ходов. Гордыня мешает противнику действовать 1 ход. Накладывает на Мученика 2% регенерации ХП до конца действия цепи.</div>
       </div>
       <div class="skill">
         <div class="name purify">[ ⚜️ ] Очищение болью <span style="color:var(--muted);font-size:12px">(откат: 4, цена: 0 ХП)</span></div>
-        <div class="desc">Доступно только против «Грешника». Вырывает все три цепи: три удара по 0,45 физической атаки, затем разрыв ран на 0,5 физической атаки. Завершающий урон полностью игнорирует броню. После применения восстанавливает 20% максимального ХП; цепи и «Грешник» снимаются.</div>
+        <div class="desc">Доступно только против цели с эффектом «Грехопадение». Вырывает три греха: три удара по 0,45 физической атаки, затем разрыв ран на 0,5 физической атаки. После применения восстанавливает 15% максимального ХП; грехи и статус «Грехопадение» снимаются.</div>
       </div>
-      <div class="note">Регенерация цепей складывается и срабатывает в конце каждого раунда, пока соответствующие цепи действуют: Алчность 2% + Гнев 4% + Гордыня 4% = 10% максимального ХП. Броня задаётся числом: при каждом ударе она случайно поглощает от 30% до 100% своего значения. Каждый удар получает отдельный бросок брони.</div>
+      <div class="note">Регенерация от грехов суммируется и действует в конце каждого раунда, пока соответствующие цепи активны: Алчность 1% + Гнев 2% + Гордыня 2% = 5% максимального ХП за ход. Броня задаётся числом: при каждом ударе она случайно поглощает от 30% до 100% своего значения. Каждый удар получает отдельный бросок брони.</div>
     </div>
 
     <div class="card">
@@ -416,9 +416,9 @@ function escHtml(s){ return String(s).replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt
 function rnd(min,max){ return round(min + Math.random()*(max-min)); }
 
 const SKILL = {
-  greed:  {name:'Алчная десятина', costPct:0.06, cooldown:1, regenPct:0.02, chain:'greed'},
-  wrath:  {name:'Праведный гнев', costPct:0.10, cooldown:2, regenPct:0.04, chain:'wrath'},
-  pride:  {name:'Приговор гордыни', costPct:0.14, cooldown:3, regenPct:0.04, chain:'pride'},
+  greed:  {name:'Алчная десятина', costPct:0.06, cooldown:1, regenPct:0.01, chain:'greed'},
+  wrath:  {name:'Праведный гнев', costPct:0.10, cooldown:2, regenPct:0.02, chain:'wrath'},
+  pride:  {name:'Приговор гордыни', costPct:0.14, cooldown:3, regenPct:0.02, chain:'pride'},
   purify: {name:'Очищение болью', costPct:0, cooldown:4, regenPct:0, chain:null},
 };
 
@@ -434,7 +434,11 @@ const state = {
   cds:{greed:0,wrath:0,pride:0,purify:0},
   chains:{greed:0,wrath:0,pride:0},
   sinner:0,
-  enemyHealLock:0,
+  enemyArmorZero:0,
+  enemyWrathDamage:0,
+  enemyVulnerability:0,
+  enemyBleedTurns:0,
+  enemyBleedBase:0,
   potions:3,
   totalHeal:0,
   activeSkills:{},
@@ -448,7 +452,7 @@ const state = {
 };
 
 function buildDerived(p){
-  p.physAtkFinal = Math.max(0,round(p.physAtkBase*(1+p.vowLevel*0.01)));
+  p.physAtkFinal = Math.max(0,round(p.physAtkBase*(1+p.vowLevel*0.02)));
   p.purifyBonus = Math.max(0,p.chainsLevel*0.002);
   p.critChance = clamp(p.critChance||0,0,1);
   p.critDamagePct = clamp(p.critDamagePct||130,130,1000);
@@ -502,7 +506,11 @@ function readInputsToState(reset=false){
     state.cds={greed:0,wrath:0,pride:0,purify:0};
     state.chains={greed:0,wrath:0,pride:0};
     state.sinner=0;
-    state.enemyHealLock=0;
+    state.enemyArmorZero=0;
+    state.enemyWrathDamage=0;
+    state.enemyVulnerability=0;
+    state.enemyBleedTurns=0;
+    state.enemyBleedBase=0;
     state.playerStun=0;
     state.playerLuckDebuff=0;
     state.totalHeal=0;
@@ -534,10 +542,6 @@ function healPlayer(amount,logs,prefix='💚 Восстановление: +'){
 }
 
 function healEnemy(amount,logs,label){
-  if(state.enemyHealLock>0){
-    if(logs) logs.push('⛓️ '+label+': лечение запрещено эффектом «Грешник».');
-    return 0;
-  }
   const before=state.enemy.hp;
   state.enemy.hp=Math.min(state.enemy.maxHp,state.enemy.hp+round(amount));
   const actual=state.enemy.hp-before;
@@ -547,6 +551,7 @@ function healEnemy(amount,logs,label){
 
 function armorDamage(raw,ignoreArmorFraction=0,logs=null){
   const incoming=Math.max(0,round(raw));
+  if(state.enemyArmorZero>0) return incoming;
   const effectiveArmor=Math.max(0,state.enemy.armor*(1-clamp(ignoreArmorFraction,0,1)));
   if(incoming<=0 || effectiveArmor<=0) return incoming;
 
@@ -619,11 +624,13 @@ function dealHit(raw,logs,options={}){
 // Каждый отдельный удар навыка самостоятельно проверяет крит.
 // Критический множитель применяется до брони и защитных реакций Некродиона.
 function resolvePlayerHit(baseRaw,logs,options={}){
-  const base=Math.max(0,round(baseRaw));
+  const incomingBase=Math.max(0,round(baseRaw));
+  const vulnerableMult=options.skipVulnerability ? 1 : (state.enemyVulnerability>0 ? 1.15 : 1);
+  const base=round(incomingBase * vulnerableMult);
   const isCrit=Math.random()<state.player.critChance;
   const raw=isCrit?round(base*state.player.critMultiplier):base;
   const dealt=dealHit(raw,logs,options);
-  return {base,raw,dealt,isCrit};
+  return {base,raw,dealt,isCrit,baseBeforeBonus:incomingBase,vulnerableMult};
 }
 
 function playerHitText(hit){
@@ -635,40 +642,45 @@ function playerHitText(hit){
 
 function setChain(kind,logs){
   state.chains[kind]=5;
-  const names={greed:'Алчности',wrath:'Гнева',pride:'Гордыни'};
-  logs.push('⛓️ Наложена Цепь '+names[kind]+' на 5 ходов.');
-  tryCreateSinner(logs);
+  const names={greed:'Алчность',wrath:'Гнев',pride:'Гордыня'};
+  logs.push('⛓️ Наложен грех «'+names[kind]+'» на 5 ходов.');
+  syncGrehopadenie(logs);
 }
 
-function tryCreateSinner(logs){
-  if(state.sinner>0) return false;
-  if(state.chains.greed>0 && state.chains.wrath>0 && state.chains.pride>0){
-    state.sinner=2;
-    state.enemyHealLock=1;
-    logs.push('🩸 Все три цепи сомкнулись: наложен «Грешник» на 2 хода.');
-    logs.push('🚫 Некродион не может восстанавливать здоровье до конца своего следующего хода.');
-    return true;
-  }
-  return false;
+function syncGrehopadenie(logs){
+  const active=state.chains.greed>0 && state.chains.wrath>0 && state.chains.pride>0;
+  const was=state.sinner>0;
+  state.sinner=active?1:0;
+  if(active && !was && logs) logs.push('🩸 На цели активировано «Грехопадение».');
+  return active && !was;
 }
 
 function clearSinEffects(logs,reason){
   state.chains={greed:0,wrath:0,pride:0};
   state.sinner=0;
-  if(logs) logs.push('⛓️ '+reason+' Все цепи и «Грешник» сняты.');
+  state.enemyArmorZero=0;
+  state.enemyWrathDamage=0;
+  state.enemyVulnerability=0;
+  state.enemyBleedTurns=0;
+  state.enemyBleedBase=0;
+  if(logs) logs.push('⛓️ '+reason+' Все грехи и «Грехопадение» сняты.');
 }
 
 function activeChainRegenPct(){
-  return Object.keys(state.chains).reduce((sum,kind)=>{
-    return sum+(state.chains[kind]>0?(SKILL[kind].regenPct||0):0);
-  },0);
+  return Object.keys(state.chains).reduce((sum,kind)=> sum+(state.chains[kind]>0?(SKILL[kind].regenPct||0):0),0);
 }
 
 function applyChainRegen(logs){
   const pctValue=activeChainRegenPct();
   if(pctValue<=0 || state.player.hp<=0) return 0;
   const percentText=(pctValue*100).toFixed(1).replace('.0','');
-  return healPlayer(state.player.maxHp*pctValue,logs,'💚 Регенерация цепей ('+percentText+'%): +');
+  return healPlayer(state.player.maxHp*pctValue,logs,'💚 Регенерация грехов ('+percentText+'%): +');
+}
+
+function applyPrideBleed(logs){
+  state.enemyBleedTurns=2;
+  state.enemyBleedBase=round(state.player.physAtkFinal*0.10);
+  logs.push('🩸 Кровотечение: 2 хода по '+state.enemyBleedBase+' базового урона с проверкой крита.');
 }
 
 function useGreed(logs){
@@ -685,6 +697,9 @@ function useGreed(logs){
     logs.push('  ⚔️ Удар '+i+': '+playerHitText(hit)+'.');
     if(state.enemy.hp<=0) break;
   }
+  state.enemyArmorZero=Math.max(state.enemyArmorZero,2);
+  logs.push('🪖 Алчность: броня и щиты цели считаются нулевыми на 2 хода.');
+  logs.push('🎯 Алчность: Некродион вынужден выбирать только атакующие действия, пока эффект активен.');
   setChain('greed',logs);
   logs.push('✅ Алчная десятина нанесла '+total+' урона.');
   return {used:true,damage:total,heal:0};
@@ -694,18 +709,15 @@ function useWrath(logs){
   const cost=spendSkillCost('wrath',logs);
   if(!cost.ok) return {used:false,damage:0,heal:0};
   state.cds.wrath=SKILL.wrath.cooldown;
-  const hadGreed=state.chains.greed>0;
   prepareEnemyReaction();
   if(attackWasStopped(logs)) return {used:true,damage:0,heal:0};
 
-  const mainHit=resolvePlayerHit(state.player.physAtkFinal,logs);
-  let total=mainHit.dealt;
-  logs.push('  🔨 Основной удар: '+playerHitText(mainHit)+'.');
-  if(hadGreed && state.enemy.hp>0){
-    const bonusHit=resolvePlayerHit(state.player.physAtkFinal*0.20,logs);
-    total+=bonusHit.dealt;
-    logs.push('  ⛓️ Бонус Цепи Алчности: '+playerHitText(bonusHit)+'.');
-  }
+  const mainHit=resolvePlayerHit(state.player.physAtkFinal*1.2,logs);
+  const total=mainHit.dealt;
+  logs.push('  🔨 Тяжёлый удар: '+playerHitText(mainHit)+'.');
+  state.enemyWrathDamage=Math.max(state.enemyWrathDamage,1);
+  state.enemyVulnerability=Math.max(state.enemyVulnerability,2);
+  logs.push('🔥 Гнев: урон Некродиона +10% на 1 ход, входящий по нему урон +15% на 2 хода.');
   setChain('wrath',logs);
   logs.push('✅ Праведный гнев нанёс '+total+' урона.');
   return {used:true,damage:total,heal:0};
@@ -715,18 +727,15 @@ function usePride(logs){
   const cost=spendSkillCost('pride',logs);
   if(!cost.ok) return {used:false,damage:0,heal:0};
   state.cds.pride=SKILL.pride.cooldown;
-  const hasCombo=state.chains.greed>0 && state.chains.wrath>0;
   prepareEnemyReaction();
   if(attackWasStopped(logs)) return {used:true,damage:0,heal:0};
 
-  const mainHit=resolvePlayerHit(state.player.physAtkFinal*1.10,logs,{ignoreArmorFraction:0.50});
-  let total=mainHit.dealt;
-  logs.push('  🗡️ Пробивающий удар: '+playerHitText(mainHit)+' (игнор 50% брони).');
-  if(hasCombo && state.enemy.hp>0){
-    const bonusHit=resolvePlayerHit(state.player.physAtkFinal*0.30,logs,{ignoreArmorFraction:0.50});
-    total+=bonusHit.dealt;
-    logs.push('  ⛓️ Бонус двух цепей: '+playerHitText(bonusHit)+'.');
-  }
+  const mainHit=resolvePlayerHit(state.player.physAtkFinal*1.3,logs);
+  const total=mainHit.dealt;
+  logs.push('  🗡️ Пробивающий удар: '+playerHitText(mainHit)+'.');
+  state.enemy.stun=Math.max(state.enemy.stun,1);
+  logs.push('👁️ Гордыня: Некродион не может действовать 1 ход.');
+  applyPrideBleed(logs);
   setChain('pride',logs);
   logs.push('✅ Приговор гордыни нанёс '+total+' урона.');
   return {used:true,damage:total,heal:0};
@@ -734,7 +743,7 @@ function usePride(logs){
 
 function usePurify(logs){
   if(state.sinner<=0){
-    logs.push('❌ Очищение болью доступно только против цели с эффектом «Грешник».');
+    logs.push('❌ Очищение болью доступно только против цели с эффектом «Грехопадение».');
     return {used:false,damage:0,heal:0};
   }
   const cost=spendSkillCost('purify',logs);
@@ -748,15 +757,15 @@ function usePurify(logs){
   for(let i=1;i<=3;i++){
     const hit=resolvePlayerHit(state.player.physAtkFinal*0.45*bonusMult,logs);
     total+=hit.dealt;
-    logs.push('  ⛓️ Вырывание цепи '+i+': '+playerHitText(hit)+'.');
+    logs.push('  ⛓️ Вырывание греха '+i+': '+playerHitText(hit)+'.');
     if(state.enemy.hp<=0) break;
   }
   if(state.enemy.hp>0){
-    const finalHit=resolvePlayerHit(state.player.physAtkFinal*0.50*bonusMult,logs,{ignoreArmorAll:true});
+    const finalHit=resolvePlayerHit(state.player.physAtkFinal*0.50*bonusMult,logs);
     total+=finalHit.dealt;
-    logs.push('  💥 Разрыв ран: '+playerHitText(finalHit)+' (полный игнор брони).');
+    logs.push('  💥 Разрыв ран: '+playerHitText(finalHit)+'.');
   }
-  const heal=healPlayer(state.player.maxHp*0.20,logs,'🩸 Очищение болью: +');
+  const heal=healPlayer(state.player.maxHp*0.15,logs,'🩸 Очищение болью: +');
   clearSinEffects(logs,'Очищение завершено.');
   logs.push('✅ Очищение болью нанесло '+total+' урона.');
   return {used:true,damage:total,heal};
@@ -773,39 +782,60 @@ function enemyBoneGather(lines){
 
 function rollEnemyBaseAtk(){ return rnd(state.enemy.atkMin,state.enemy.atkMax); }
 
+function currentEnemyDamageMult(){
+  return state.enemyWrathDamage>0 ? 1.10 : 1;
+}
+
 function damagePlayer(amount){
-  const dealt=Math.min(state.player.hp,Math.max(0,round(amount)));
+  const scaled=round(amount*currentEnemyDamageMult());
+  const dealt=Math.min(state.player.hp,Math.max(0,scaled));
   state.player.hp=Math.max(0,state.player.hp-dealt);
   return dealt;
 }
 
 function finishEnemyAction(lines,dealt=0){
-  if(state.enemyHealLock>0) state.enemyHealLock--;
   return {lines,dealt};
+}
+
+function greedForcesAttack(){
+  return state.enemyArmorZero>0;
+}
+
+function applyEnemyStartEffects(lines){
+  let dealt=0;
+  if(state.enemyBleedTurns>0 && state.enemy.hp>0){
+    const bleedHit=resolvePlayerHit(state.enemyBleedBase,lines,{ignoreArmorAll:true,skipVulnerability:true});
+    dealt+=bleedHit.dealt;
+    lines.push('🩸 Кровотечение → '+playerHitText(bleedHit)+' (игнор брони).');
+    state.enemyBleedTurns--;
+  }
+  return dealt;
 }
 
 function enemyTurn(){
   const lines=[];
   if(state.enemy.hp<=0) return {lines,dealt:0};
 
+  let startDealt=applyEnemyStartEffects(lines);
+  if(state.enemy.hp<=0) return finishEnemyAction(lines,startDealt);
+
   if(state.enemy.stun>0){
     state.enemy.stun--;
-    lines.push('🪨 Некродион пропускает ход из-за оглушения.');
-    return finishEnemyAction(lines,0);
+    lines.push('🪨 Некродион пропускает ход из-за Гордыни.');
+    return finishEnemyAction(lines,startDealt);
   }
 
   if(state.enemy.healCd>0) state.enemy.healCd--;
+  const forcedAttack=greedForcesAttack();
 
-  // За один ход Некродион может совершить только одно активное действие.
-  // Как только одно умение сработало, ход немедленно заканчивается.
-  if(enemyBoneGather(lines)){
-    return finishEnemyAction(lines,0);
+  if(!forcedAttack && enemyBoneGather(lines)){
+    return finishEnemyAction(lines,startDealt);
   }
 
   if(sk('thunder') && Math.random()<0.25){
     const dmg=damagePlayer(state.enemy.atkMax*3);
-    lines.push('⚜ Громовое копьё → '+dmg+' урона.');
-    return finishEnemyAction(lines,dmg);
+    lines.push('⚜ Громовое копьё → '+dmg+' урона.'+(state.enemyWrathDamage>0?' (усилен Гневом)':''));
+    return finishEnemyAction(lines,startDealt+dmg);
   }
 
   if(sk('spores') && Math.random()<0.15){
@@ -818,55 +848,51 @@ function enemyTurn(){
       lines.push('  🕷 Удар '+i+' → '+dmg+' урона.');
       if(state.player.hp<=0) break;
     }
-    return finishEnemyAction(lines,total);
+    return finishEnemyAction(lines,startDealt+total);
   }
 
-  if(sk('unfair') && Math.random()<0.20){
+  if(!forcedAttack && sk('unfair') && Math.random()<0.20){
     lines.push('🧨 Нечестное начало: ресурсы обнулены, но Обет страдания всё равно оплачивает навыки здоровьем.');
-    return finishEnemyAction(lines,0);
+    return finishEnemyAction(lines,startDealt);
   }
 
-  if(sk('field2') && Math.random()<0.20){
+  if(!forcedAttack && sk('field2') && Math.random()<0.20){
     state.playerLuckDebuff=2;
     lines.push('🧲 Поле 2: удача Мученика снижена на 2 хода.');
-    return finishEnemyAction(lines,0);
+    return finishEnemyAction(lines,startDealt);
   }
 
   if(sk('critcrit') && Math.random()<0.20){
     const dmg=damagePlayer(state.player.hp*0.70);
-    lines.push('💥 Критический крит 1: снято 70% текущего ХП → '+dmg+' урона.');
-    return finishEnemyAction(lines,dmg);
+    lines.push('💥 Критический крит 1: снято 70% текущего ХП → '+dmg+' урона.'+(state.enemyWrathDamage>0?' (усилен Гневом)':''));
+    return finishEnemyAction(lines,startDealt+dmg);
   }
 
-  if(sk('heal') && state.enemy.healCd===0 && state.enemy.hp<state.enemy.maxHp*0.70){
-    if(state.enemyHealLock>0){
-      lines.push('🚫 Лечение Некродиона сорвано эффектом «Грешник».');
-    }else{
-      healEnemy(state.enemy.maxHp/3,lines,'🎶 Лечение');
-      state.enemy.healCd=5;
-    }
-    return finishEnemyAction(lines,0);
+  if(!forcedAttack && sk('heal') && state.enemy.healCd===0 && state.enemy.hp<state.enemy.maxHp*0.70){
+    healEnemy(state.enemy.maxHp/3,lines,'🎶 Лечение');
+    state.enemy.healCd=5;
+    return finishEnemyAction(lines,startDealt);
   }
 
   if(sk('fleshabs') && Math.random()<0.20){
     const mult=1+Math.random()*2;
     const dmg=damagePlayer(state.enemy.atkMax*mult);
-    lines.push('🩸 Поглощение плоти ('+Math.round(mult*100)+'%) → '+dmg+' урона.');
+    lines.push('🩸 Поглощение плоти ('+Math.round(mult*100)+'%) → '+dmg+' урона.'+(state.enemyWrathDamage>0?' (усилен Гневом)':''));
     healEnemy(dmg,lines,'🩸 Вампиризм');
-    return finishEnemyAction(lines,dmg);
+    return finishEnemyAction(lines,startDealt+dmg);
   }
 
   if(sk('whirl') && Math.random()<0.20){
     const dmg=damagePlayer(rnd(50,350));
-    lines.push('💨 Волчок → '+dmg+' урона.');
-    return finishEnemyAction(lines,dmg);
+    lines.push('💨 Волчок → '+dmg+' урона.'+(state.enemyWrathDamage>0?' (усилен Гневом)':''));
+    return finishEnemyAction(lines,startDealt+dmg);
   }
 
   if(sk('masteryv2') && Math.random()<0.25){
     const mult=0.5+Math.random()*2;
     const dmg=damagePlayer(state.enemy.atkMax*mult);
-    lines.push('🗡️ Остаточное мастерство v2 ('+Math.round(mult*100)+'%) → '+dmg+' урона.');
-    return finishEnemyAction(lines,dmg);
+    lines.push('🗡️ Остаточное мастерство v2 ('+Math.round(mult*100)+'%) → '+dmg+' урона.'+(state.enemyWrathDamage>0?' (усилен Гневом)':''));
+    return finishEnemyAction(lines,startDealt+dmg);
   }
 
   let raw=rollEnemyBaseAtk();
@@ -874,8 +900,8 @@ function enemyTurn(){
   if(humiliate) raw*=3;
   const dmg=damagePlayer(raw);
   const icon=state.enemy.atkType==='mag'?'✨':'⚔️';
-  lines.push((humiliate?'👊 Унижение ×3':icon+' Обычная атака')+' → '+dmg+' урона.'+(sk('ignore')?' (игнор защиты)':''));
-  return finishEnemyAction(lines,dmg);
+  lines.push((humiliate?'👊 Унижение ×3':icon+' Обычная атака')+' → '+dmg+' урона.'+(sk('ignore')?' (игнор защиты)':'')+(state.enemyWrathDamage>0?' (усилен Гневом)':''));
+  return finishEnemyAction(lines,startDealt+dmg);
 }
 
 function tickDurations(usedKind,createdSinner){
@@ -887,13 +913,11 @@ function tickDurations(usedKind,createdSinner){
     if(kind!==usedKind && state.chains[kind]>0) state.chains[kind]--;
   });
 
-  if(!createdSinner && state.sinner>0){
-    state.sinner--;
-    if(state.sinner===0){
-      state.chains={greed:0,wrath:0,pride:0};
-      if(!state.isSimulating) appendLogs(['⛓️ Срок «Грешника» истёк. Все цепи исчезли.']);
-    }
-  }
+  if(state.enemyArmorZero>0) state.enemyArmorZero--;
+  if(state.enemyWrathDamage>0) state.enemyWrathDamage--;
+  if(state.enemyVulnerability>0) state.enemyVulnerability--;
+
+  syncGrehopadenie();
 
   if(state.playerLuckDebuff>0) state.playerLuckDebuff--;
 }
@@ -910,22 +934,16 @@ function performRound(kind){
     used=true;
     kind='stunned';
   }else if(kind==='greed'){
-    const sinnerBefore=state.sinner;
     const r=useGreed(parts);
     used=r.used;playerDamage=r.damage;playerHeal=r.heal;
-    createdSinner=sinnerBefore===0 && state.sinner>0;
   }else if(kind==='wrath'){
     if(state.cds.wrath>0){ appendLogs(['❌ Праведный гнев на откате: '+state.cds.wrath+' х.']); if(!state.isSimulating)render(); return null; }
-    const sinnerBefore=state.sinner;
     const r=useWrath(parts);
     used=r.used;playerDamage=r.damage;playerHeal=r.heal;
-    createdSinner=sinnerBefore===0 && state.sinner>0;
   }else if(kind==='pride'){
     if(state.cds.pride>0){ appendLogs(['❌ Приговор гордыни на откате: '+state.cds.pride+' х.']); if(!state.isSimulating)render(); return null; }
-    const sinnerBefore=state.sinner;
     const r=usePride(parts);
     used=r.used;playerDamage=r.damage;playerHeal=r.heal;
-    createdSinner=sinnerBefore===0 && state.sinner>0;
   }else if(kind==='purify'){
     if(state.cds.purify>0){ appendLogs(['❌ Очищение болью на откате: '+state.cds.purify+' х.']); if(!state.isSimulating)render(); return null; }
     const r=usePurify(parts);
@@ -1165,21 +1183,24 @@ function render(){
     '┣ <span class="bar">'+bar(p.hp,p.maxHp)+'</span> ('+pct(p.hp,p.maxHp)+'%)',
     '┣ 🗡 Физ. атака: '+p.physAtkFinal,
     '┣ 💥 Крит: '+(p.critChance*100).toFixed(1).replace('.0','')+'% шанс, '+p.critDamagePct+'% урон',
-    '┣ 💪 Обет: +'+p.vowLevel+'% силы',
-    '┣ ⛓️ Оковы: +'+(p.purifyBonus*100).toFixed(1).replace('.0','')+'% к Очищению',
-    '┣ 💚 Активный реген цепей: '+(activeChainRegenPct()*100).toFixed(1).replace('.0','')+'% за ход',
+    '┣ 💪 Обет: +'+(p.vowLevel*2)+'% силы',
+    '┣ ⛓️ Очищение: +'+(p.purifyBonus*100).toFixed(1).replace('.0','')+'% урона',
+    '┣ 💚 Регенерация грехов: '+(activeChainRegenPct()*100).toFixed(1).replace('.0','')+'% за ход',
     '┗ 💚 Восстановлено за бой: '+state.totalHeal,
   ].join('<br>');
 
   const enemyEffects=[];
-  if(en.stun>0) enemyEffects.push('оглушение');
-  if(state.enemyHealLock>0) enemyEffects.push('запрет лечения');
-  if(state.sinner>0) enemyEffects.push('Грешник '+state.sinner+' х.');
+  if(en.stun>0) enemyEffects.push('бездействие '+en.stun+' х.');
+  if(state.enemyArmorZero>0) enemyEffects.push('броня = 0 ('+state.enemyArmorZero+' х.)');
+  if(state.enemyWrathDamage>0) enemyEffects.push('ярость: урон +10% ('+state.enemyWrathDamage+' х.)');
+  if(state.enemyVulnerability>0) enemyEffects.push('уязвимость: входящий урон +15% ('+state.enemyVulnerability+' х.)');
+  if(state.enemyBleedTurns>0) enemyEffects.push('кровотечение '+state.enemyBleedTurns+' х.');
+  if(state.sinner>0) enemyEffects.push('Грехопадение');
   el('enemyState').innerHTML=[
     '┣ 🖤 ХП: '+round(en.hp)+'/'+round(en.maxHp),
     '┣ <span class="bar">'+bar(en.hp,en.maxHp)+'</span> ('+pct(en.hp,en.maxHp)+'%)',
     '┣ 🗡 Атака: '+en.atkMin+'–'+en.atkMax+' ('+(en.atkType==='mag'?'✨ маг':'⚔️ физ')+')',
-    '┣ 🪖 Физ. броня: '+en.armor+' (бросок '+round(en.armor*0.30)+'–'+round(en.armor)+')',
+    '┣ 🪖 Физ. броня: '+en.armor+(state.enemyArmorZero>0?' (сейчас отключена Алчностью)':' (бросок '+round(en.armor*0.30)+'–'+round(en.armor)+')'),
     '┗ Эффекты: '+(enemyEffects.length?enemyEffects.join(', '):'нет'),
   ].join('<br>');
 
@@ -1187,12 +1208,15 @@ function render(){
   if(state.chains.greed>0) badges.push('<div class="badge greed">⛓️ Алчность: '+state.chains.greed+' х.</div>');
   if(state.chains.wrath>0) badges.push('<div class="badge wrath">⛓️ Гнев: '+state.chains.wrath+' х.</div>');
   if(state.chains.pride>0) badges.push('<div class="badge pride">⛓️ Гордыня: '+state.chains.pride+' х.</div>');
-  if(activeChainRegenPct()>0) badges.push('<div class="badge">💚 Реген цепей: '+(activeChainRegenPct()*100).toFixed(1).replace('.0','')+'% за ход</div>');
-  if(state.sinner>0) badges.push('<div class="badge sinner">🩸 Грешник: '+state.sinner+' х.</div>');
-  if(state.enemyHealLock>0) badges.push('<div class="badge lock">🚫 Лечение врага запрещено</div>');
+  if(activeChainRegenPct()>0) badges.push('<div class="badge">💚 Реген грехов: '+(activeChainRegenPct()*100).toFixed(1).replace('.0','')+'% за ход</div>');
+  if(state.sinner>0) badges.push('<div class="badge sinner">🩸 Грехопадение активно</div>');
+  if(state.enemyArmorZero>0) badges.push('<div class="badge">🪖 Броня врага = 0: '+state.enemyArmorZero+' х.</div>');
+  if(state.enemyWrathDamage>0) badges.push('<div class="badge">🔥 Некродион бьёт сильнее: '+state.enemyWrathDamage+' х.</div>');
+  if(state.enemyVulnerability>0) badges.push('<div class="badge">🎯 Урон по врагу +15%: '+state.enemyVulnerability+' х.</div>');
+  if(state.enemyBleedTurns>0) badges.push('<div class="badge">🩸 Кровотечение: '+state.enemyBleedTurns+' х.</div>');
   if(state.playerStun>0) badges.push('<div class="badge">🪨 Мученик оглушён</div>');
   if(state.playerLuckDebuff>0) badges.push('<div class="badge">🧲 Удача −100: '+state.playerLuckDebuff+' х.</div>');
-  el('statusBadges').innerHTML=badges.length?badges.join(''):'<div class="badge">Цепей и эффектов нет</div>';
+  el('statusBadges').innerHTML=badges.length?badges.join(''):'<div class="badge">Грехов и эффектов нет</div>';
 
   const buttonMap=[
     ['btnGreed','greed'],
