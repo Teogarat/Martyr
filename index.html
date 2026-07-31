@@ -3,131 +3,264 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Мученик v2 — финальный бой</title>
+  <title>Мученик — Оковы греха</title>
   <style>
     :root{
-      --bg:#1a0a0a; --panel:#2a0e0e; --panel2:#1f0909; --line:#5c1a1a;
-      --text:#fff0f0; --muted:#d49090; --accent:#dc2626; --good:#86efac; --warn:#fde68a; --bad:#fca5a5;
+      --bg:#0b0706;
+      --panel:#21110d;
+      --panel2:#160b09;
+      --panel3:#2c1711;
+      --line:#6f3828;
+      --text:#fff7ed;
+      --muted:#d7a88f;
+      --accent:#c2410c;
+      --accent2:#eab308;
+      --good:#86efac;
+      --warn:#fde68a;
+      --bad:#fca5a5;
+      --greed:#facc15;
+      --wrath:#ef4444;
+      --pride:#c084fc;
+      --sinner:#fb7185;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#0d0000,var(--bg));color:var(--text)}
-    .app{max-width:1450px;margin:0 auto;padding:12px;display:grid;grid-template-columns:420px 1fr;gap:10px;align-items:start}
+    body{
+      margin:0;
+      font-family:Inter,Segoe UI,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 15% 0%,rgba(194,65,12,.16),transparent 32rem),
+        linear-gradient(180deg,#050302,var(--bg));
+      color:var(--text)
+    }
+    .app{
+      max-width:1500px;
+      margin:0 auto;
+      padding:12px;
+      display:grid;
+      grid-template-columns:430px 1fr;
+      gap:10px;
+      align-items:start
+    }
     .stack{display:grid;gap:10px;align-content:start}
-    .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
-    .title{font-size:18px;font-weight:800;margin:0 0 14px}
-    .subtitle{font-size:14px;font-weight:700;margin:0 0 10px}
-    .grid2,.grid3,.grid4{display:grid;gap:12px}
+    .card{
+      background:linear-gradient(180deg,rgba(44,23,17,.98),rgba(28,13,10,.98));
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      box-shadow:0 14px 34px rgba(0,0,0,.38)
+    }
+    .title{font-size:18px;font-weight:900;margin:0 0 14px}
+    .subtitle{font-size:14px;font-weight:800;margin:0 0 10px}
+    .grid2,.grid3,.grid4{display:grid;gap:10px}
     .grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
     .grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
     .grid4{grid-template-columns:repeat(4,minmax(0,1fr))}
     label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
-    input,select{width:100%;background:#f3f4f6;color:#111827;border:1px solid #d1d5db;border-radius:10px;padding:9px 10px;font-size:16px;font-weight:600}
-    .fight-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .panel{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:12px}
+    input,select{
+      width:100%;
+      background:#fff7ed;
+      color:#1c1917;
+      border:1px solid #fed7aa;
+      border-radius:10px;
+      padding:9px 10px;
+      font-size:16px;
+      font-weight:700
+    }
+    .fight-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .panel{
+      background:var(--panel2);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px
+    }
     .mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
-    .state-line{font-size:15px;line-height:1.6}
-    .bar{letter-spacing:2px;color:#fecaca}
+    .state-line{font-size:15px;line-height:1.62}
+    .bar{letter-spacing:2px;color:#fdba74}
     .badges,.btns{display:flex;gap:8px;flex-wrap:wrap}
     .badges{margin-bottom:12px}
-    .badge,.pill{background:#f8fafc;color:#0f172a;border-radius:999px;padding:5px 10px;font-weight:700;font-size:13px}
-    button{border:0;border-radius:12px;padding:10px 12px;font-size:15px;font-weight:800;color:#fff;cursor:pointer;min-height:46px}
-    button:disabled{opacity:.45;cursor:not-allowed}
-    .b-start{background:linear-gradient(90deg,#7f1d1d,#dc2626)}
-    .b-reset{background:#c95f00}
-    .b-bloody{background:linear-gradient(90deg,#991b1b,#dc2626);min-width:200px;flex:1 1 200px}
-    .b-foreign{background:linear-gradient(90deg,#7c2d12,#c2410c);min-width:190px}
-    .b-catharsis{background:linear-gradient(90deg,#4c0519,#9f1239);min-width:190px}
+    .badge,.pill{
+      background:#fff7ed;
+      color:#292524;
+      border-radius:999px;
+      padding:5px 10px;
+      font-weight:800;
+      font-size:13px;
+      border:1px solid rgba(255,255,255,.45)
+    }
+    .badge.greed{background:#fef08a;color:#713f12}
+    .badge.wrath{background:#fecaca;color:#7f1d1d}
+    .badge.pride{background:#e9d5ff;color:#581c87}
+    .badge.sinner{background:#fda4af;color:#881337}
+    .badge.lock{background:#bae6fd;color:#0c4a6e}
+    button{
+      border:0;
+      border-radius:12px;
+      padding:10px 12px;
+      font-size:14px;
+      font-weight:900;
+      color:#fff;
+      cursor:pointer;
+      min-height:46px;
+      transition:transform .12s,filter .12s
+    }
+    button:hover:not(:disabled){filter:brightness(1.08);transform:translateY(-1px)}
+    button:disabled{opacity:.42;cursor:not-allowed}
+    .b-start{background:linear-gradient(90deg,#7c2d12,#ea580c)}
+    .b-reset{background:#a16207}
+    .b-greed{background:linear-gradient(90deg,#854d0e,#ca8a04);min-width:190px;flex:1 1 190px}
+    .b-wrath{background:linear-gradient(90deg,#7f1d1d,#dc2626);min-width:190px;flex:1 1 190px}
+    .b-pride{background:linear-gradient(90deg,#581c87,#9333ea);min-width:190px;flex:1 1 190px}
+    .b-purify{background:linear-gradient(90deg,#4c0519,#e11d48);min-width:205px;flex:1 1 205px}
     .b-skip{background:linear-gradient(90deg,#374151,#6b7280);min-width:140px}
-    .b-potion{background:linear-gradient(90deg,#14532d,#16a34a);min-width:140px}
-    .b-sim{background:#374151;border:1px solid var(--line)}
-    .mini{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:12px}
-    .mini .k{color:var(--muted);font-size:13px}
-    .mini .v{font-size:22px;font-weight:900;margin-top:8px}
-    .log{height:620px;overflow:auto;background:#0d0000;border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:8px}
-    .entry{background:#1a0505;border:1px solid #5c1a1a;border-radius:12px;padding:10px 12px;white-space:pre-wrap;font-size:15px;line-height:1.5;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#fff}
-    .skill{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px}
-    .skill .name{font-weight:800;margin-bottom:6px;color:#fca5a5}
-    .desc{color:var(--muted);font-size:13px;line-height:1.45}
+    .b-potion{background:linear-gradient(90deg,#14532d,#16a34a);min-width:145px}
+    .b-sim{background:#44403c;border:1px solid #78716c}
+    .mini{
+      background:var(--panel2);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:11px
+    }
+    .mini .k{color:var(--muted);font-size:12px;line-height:1.3}
+    .mini .v{font-size:21px;font-weight:950;margin-top:7px}
+    .log{
+      height:610px;
+      overflow:auto;
+      background:#080403;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      display:grid;
+      gap:8px
+    }
+    .entry{
+      background:#140806;
+      border:1px solid #5d2d21;
+      border-radius:12px;
+      padding:10px 12px;
+      white-space:pre-wrap;
+      font-size:14px;
+      line-height:1.5;
+      font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+      color:#fff7ed
+    }
+    .skill{
+      background:var(--panel2);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:10px;
+      margin-bottom:8px
+    }
+    .skill .name{font-weight:900;margin-bottom:6px;color:#fdba74}
+    .skill .name.greed{color:var(--greed)}
+    .skill .name.wrath{color:#f87171}
+    .skill .name.pride{color:#d8b4fe}
+    .skill .name.purify{color:#fda4af}
+    .desc{color:var(--muted);font-size:13px;line-height:1.48}
+    .note{
+      border-left:3px solid #f59e0b;
+      background:rgba(245,158,11,.08);
+      padding:9px 10px;
+      border-radius:8px;
+      color:#fed7aa;
+      font-size:12px;
+      line-height:1.45;
+      margin-top:10px
+    }
     .sim-wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
-    .regen-bar{height:6px;border-radius:3px;background:#5c1a1a;margin-top:4px}
-    .regen-bar-fill{height:6px;border-radius:3px;background:linear-gradient(90deg,#dc2626,#f87171)}
-
-    /* --- Умения Некродиона --- */
     .necro-skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
-    .necro-skill-check{display:flex;align-items:flex-start;gap:8px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 10px;cursor:pointer;transition:border-color .15s}
-    .necro-skill-check:hover{border-color:#dc2626}
-    .necro-skill-check input[type=checkbox]{width:18px;height:18px;flex-shrink:0;accent-color:#dc2626;margin-top:2px;cursor:pointer}
-    .necro-skill-check .sk-label{font-size:13px;font-weight:700;color:#fca5a5;display:block}
+    .necro-skill-check{
+      display:flex;
+      align-items:flex-start;
+      gap:8px;
+      background:var(--panel2);
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:8px 10px;
+      cursor:pointer;
+      transition:border-color .15s
+    }
+    .necro-skill-check:hover{border-color:#ea580c}
+    .necro-skill-check input[type=checkbox]{
+      width:18px;height:18px;flex-shrink:0;accent-color:#ea580c;margin-top:2px;cursor:pointer
+    }
+    .necro-skill-check .sk-label{font-size:13px;font-weight:800;color:#fdba74;display:block}
     .necro-skill-check .sk-desc{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.35}
-
-    /* атак диапазон */
-    .atk-range{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-
-    @media (max-width:1250px){.app{grid-template-columns:1fr}.fight-grid{grid-template-columns:1fr}.sim-wrap,.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.necro-skills-grid{grid-template-columns:1fr}}
+    .cost-warning{color:#fecaca;font-weight:800}
+    @media (max-width:1250px){
+      .app{grid-template-columns:1fr}
+      .fight-grid{grid-template-columns:1fr}
+      .sim-wrap,.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .necro-skills-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:680px){
+      .grid2,.grid3,.grid4,.sim-wrap{grid-template-columns:1fr}
+      .app{padding:6px}
+      .log{height:480px}
+    }
   </style>
 </head>
 <body>
 <div class="app">
   <div class="stack">
-    <!-- СТАТЫ ИГРОКА -->
     <div class="card">
-      <h2 class="title">🩸 Мученик — сборка</h2>
+      <h2 class="title">⛓️ Мученик — новая сборка</h2>
       <div class="grid2">
-        <div><label>ХП</label><input id="pMaxHp" type="number" value="4000"></div>
-        <div><label>Физ. атака</label><input id="pPhysAtk" type="number" value="500"></div>
-        <div><label>Уровень Дара проклятия</label><input id="pCurseLevel" type="number" value="10"></div>
-        <div><label>Уровень Мук боли</label><input id="pPainLevel" type="number" value="10"></div>
+        <div><label>Максимальное ХП</label><input id="pMaxHp" type="number" min="1" value="4000"></div>
+        <div><label>Базовая физ. атака</label><input id="pPhysAtk" type="number" min="0" value="500"></div>
+        <div><label>Уровень «Обета страдания»</label><input id="pVowLevel" type="number" min="0" value="10"></div>
+        <div><label>Уровень «Оков греха»</label><input id="pChainsLevel" type="number" min="0" value="10"></div>
+        <div><label>Шанс критического удара, %</label><input id="pCritChance" type="number" min="0" max="100" step="0.1" value="0"></div>
+        <div><label>Критический урон, % (130–1000)</label><input id="pCritDamage" type="number" min="130" max="1000" step="1" value="130"></div>
       </div>
       <div class="grid4" style="margin-top:12px">
-        <div class="mini"><div class="k">Физ. атака (итог)</div><div class="v" id="calcPhys">0</div></div>
-        <div class="mini"><div class="k">Множитель</div><div class="v" id="calcMult">0</div></div>
-        <div class="mini"><div class="k">Реген (тек. ход)</div><div class="v" id="calcRegen">0%</div></div>
-        <div class="mini"><div class="k">Накоп. хил за бой</div><div class="v" id="calcTotalHeal">0</div></div>
+        <div class="mini"><div class="k">Физ. атака с прокачкой</div><div class="v" id="calcPhys">0</div></div>
+        <div class="mini"><div class="k">Крит</div><div class="v" id="calcCrit">0% × 130%</div></div>
+        <div class="mini"><div class="k">Бонус «Очищения»</div><div class="v" id="calcPurifyBonus">0%</div></div>
+        <div class="mini"><div class="k">Цена полного цикла</div><div class="v" id="calcCycleCost">0</div></div>
+        <div class="mini"><div class="k">Активный реген цепей</div><div class="v" id="calcChainRegen">0%</div></div>
+        <div class="mini"><div class="k">Восстановлено за бой</div><div class="v" id="calcTotalHeal">0</div></div>
       </div>
     </div>
 
-    <!-- УМЕНИЯ МУЧЕНИКА -->
     <div class="card">
       <h2 class="title">Умения Мученика</h2>
       <div class="skill">
-        <div class="name">[ ⚜️ ] Дар проклятия <span style="color:var(--muted);font-size:12px">(пассивка)</span></div>
-        <div class="desc">Игнорирует броню противника. Восстановленное здоровье добавляется к урону умений. Базовый множитель 2. Прокачка: +1.5% к базовому множителю за уровень.</div>
+        <div class="name">[ ⚜️ ] Обет страдания <span style="color:var(--muted);font-size:12px">(пассивка)</span></div>
+        <div class="desc">Активные навыки расходуют здоровье вместо маны и стамины. Навык не может уменьшить здоровье ниже 1. Если здоровья недостаточно, применить его нельзя. Прокачка: сила увеличивается на 1% за уровень.</div>
       </div>
       <div class="skill">
-        <div class="name">[ ⚜️ ] Муки боли <span style="color:var(--muted);font-size:12px">(пассивка)</span></div>
-        <div class="desc">Не может наносить крит. Не может экипировать оружие. Броня и щиты считаются защитой 0. Пропуск хода отнимает 10% текущего ХП. Прокачка: +2% физ. атаки за уровень.</div>
+        <div class="name">[ ⚜️ ] Оковы греха <span style="color:var(--muted);font-size:12px">(пассивка)</span></div>
+        <div class="desc">Три атакующих навыка накладывают Цепь Алчности, Цепь Гнева и Цепь Гордыни на 5 ходов. Повторное наложение обновляет длительность. Все три цепи создают «Грешника» на 2 хода. При его наложении враг не может восстанавливать здоровье до конца своего следующего хода. После завершения «Грешника» цепи исчезают. Прокачка: урон «Очищения болью» +0,2% за уровень.</div>
       </div>
       <div class="skill">
-        <div class="name">[ ⚜️ ] Регенерация <span style="color:var(--muted);font-size:12px">(пассивка)</span></div>
-        <div class="desc">Постоянно восстанавливает здоровье. При 1–10% ХП регенерация 10%. Линейно растёт: при 95–100% ХП регенерация 50%.</div>
+        <div class="name greed">[ ⚜️ ] Алчная десятина <span style="color:var(--muted);font-size:12px">(откат: 1, цена: 6% макс. ХП)</span></div>
+        <div class="desc">Три последовательных физических удара по 0,25 физической атаки. Накладывает Цепь Алчности. Пока цепь действует, она даёт 2% регенерации максимального ХП за ход.</div>
       </div>
       <div class="skill">
-        <div class="name">[ ⚜️ ] Кровавый удар <span style="color:var(--muted);font-size:12px">(откат: 0, стоим.: 20% тек. ХП)</span></div>
-        <div class="desc">Наносит урон = (физ. атака + восстановленное ХП за прошлый ход) × 1.1 × множитель. Игнорирует броню.</div>
+        <div class="name wrath">[ ⚜️ ] Праведный гнев <span style="color:var(--muted);font-size:12px">(откат: 2, цена: 10% макс. ХП)</span></div>
+        <div class="desc">Тяжёлый удар на 1,0 физической атаки. Если уже есть Цепь Алчности, следом наносится дополнительный удар на 0,2 физической атаки. Накладывает Цепь Гнева. Пока цепь действует, она даёт 4% регенерации максимального ХП за ход.</div>
       </div>
       <div class="skill">
-        <div class="name">[ ⚜️ ] Чужая кровь <span style="color:var(--muted);font-size:12px">(откат: 4 хода, стоим.: 40% тек. ХП)</span></div>
-        <div class="desc">Стан 1 ход. Наносит урон = (физ. атака + восст. ХП прошлого хода × 3) × множитель. Игнорирует броню и умения.</div>
+        <div class="name pride">[ ⚜️ ] Приговор гордыни <span style="color:var(--muted);font-size:12px">(откат: 3, цена: 14% макс. ХП)</span></div>
+        <div class="desc">Пробивающий удар на 1,1 физической атаки. Если уже есть Цепи Алчности и Гнева, наносится дополнительный удар на 0,3 физической атаки. Навык игнорирует 50% физической брони. Накладывает Цепь Гордыни. Пока цепь действует, она даёт 4% регенерации максимального ХП за ход.</div>
       </div>
       <div class="skill">
-        <div class="name">[ ⚜️ ] Катарсис <span style="color:var(--muted);font-size:12px">(стоим.: 60% тек. ХП)</span></div>
-        <div class="desc">Наносит урон = накопленное восстановленное ХП за весь бой × 6 × множитель. Игнорирует броню и умения.</div>
+        <div class="name purify">[ ⚜️ ] Очищение болью <span style="color:var(--muted);font-size:12px">(откат: 4, цена: 0 ХП)</span></div>
+        <div class="desc">Доступно только против «Грешника». Вырывает все три цепи: три удара по 0,45 физической атаки, затем разрыв ран на 0,5 физической атаки. Завершающий урон полностью игнорирует броню. После применения восстанавливает 20% максимального ХП; цепи и «Грешник» снимаются.</div>
       </div>
+      <div class="note">Регенерация цепей складывается и срабатывает в конце каждого раунда, пока соответствующие цепи действуют: Алчность 2% + Гнев 4% + Гордыня 4% = 10% максимального ХП. Броня задаётся числом: при каждом ударе она случайно поглощает от 30% до 100% своего значения. Каждый удар получает отдельный бросок брони.</div>
     </div>
 
-    <!-- ВРАГ -->
     <div class="card">
       <h2 class="title">✦ ☠︎︎ Примарх Некродион</h2>
       <div class="grid2">
-        <div><label>ХП</label><input id="eMaxHp" type="number" value="30000"></div>
-        <div><label>Физ. защита</label><input id="ePhysDef" type="number" value="5000"></div>
-        <div><label>Маг. защита</label><input id="eMagDef" type="number" value="5000"></div>
+        <div><label>ХП</label><input id="eMaxHp" type="number" min="1" value="30000"></div>
+        <div><label>Физ. броня</label><input id="eArmor" type="number" min="0" value="5000"></div>
       </div>
-      <!-- Атака: мин, макс, тип -->
       <div style="margin-top:10px">
         <div class="grid3">
-          <div><label>Мин. атака</label><input id="eAtkMin" type="number" value="150"></div>
-          <div><label>Макс. атака</label><input id="eAtkMax" type="number" value="450"></div>
+          <div><label>Мин. атака</label><input id="eAtkMin" type="number" min="0" value="150"></div>
+          <div><label>Макс. атака</label><input id="eAtkMax" type="number" min="0" value="450"></div>
           <div><label>Тип атаки</label>
             <select id="eAtkType">
               <option value="phys">⚔️ Физическая</option>
@@ -137,18 +270,16 @@
         </div>
       </div>
 
-      <!-- Умения Некродиона с чекбоксами -->
       <div style="margin-top:14px">
         <div class="subtitle">⚙️ Активные умения Некродиона</div>
         <div class="necro-skills-grid" id="necroSkillsGrid">
-          <!-- Старые -->
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_bone" checked>
-            <div><span class="sk-label">💀 Сбор костей</span><span class="sk-desc">Если ранен, 25% шанс восстановить 20% от потерянного ХП.</span></div>
+            <div><span class="sk-label">💀 Сбор костей</span><span class="sk-desc">Если ранен, 25% шанс восстановить 20% потерянного ХП.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_block" checked>
-            <div><span class="sk-label">🛡️ Блок</span><span class="sk-desc">30% шанс полностью заблокировать входящую атаку.</span></div>
+            <div><span class="sk-label">🛡️ Блок</span><span class="sk-desc">30% шанс полностью заблокировать атакующий навык.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_suppress" checked>
@@ -158,14 +289,13 @@
             <input type="checkbox" id="sk_humiliate" checked>
             <div><span class="sk-label">👊 Унижение</span><span class="sk-desc">20% шанс нанести ×3 урона.</span></div>
           </label>
-          <!-- Новые -->
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_parry">
-            <div><span class="sk-label">🏃‍♀️ Парирование</span><span class="sk-desc">Шанс парировать атаку. Умение уходит в откат, ресурсы тратятся.</span></div>
+            <div><span class="sk-label">🏃‍♀️ Парирование</span><span class="sk-desc">25% шанс парировать навык. Цена и откат сохраняются.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_defense3">
-            <div><span class="sk-label">🛡️ Защита 3</span><span class="sk-desc">Не может получить более 50% урона от макс. ХП за удар.</span></div>
+            <div><span class="sk-label">🛡️ Защита 3</span><span class="sk-desc">Один удар не может снять больше 50% максимального ХП.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_ignore">
@@ -173,39 +303,39 @@
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_fleshabs">
-            <div><span class="sk-label">🩸 Поглощение плоти</span><span class="sk-desc">Шанс нанести 100–300% от макс. физ. атаки и конвертировать в ХП.</span></div>
+            <div><span class="sk-label">🩸 Поглощение плоти</span><span class="sk-desc">Шанс нанести 100–300% максимальной атаки и вылечиться на урон.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_thunder">
-            <div><span class="sk-label">⚜ Громовое копье</span><span class="sk-desc">×3 от маг. урона. Всегда приоритетнее атаки, игнорирует некоторые механики.</span></div>
+            <div><span class="sk-label">⚜ Громовое копьё</span><span class="sk-desc">×3 от максимальной атаки. Всегда приоритетнее обычной атаки.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_whirl">
-            <div><span class="sk-label">💨 Волчок</span><span class="sk-desc">Вихрь. Урон 50–350.</span></div>
+            <div><span class="sk-label">💨 Волчок</span><span class="sk-desc">Наносит 50–350 урона.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_masteryv2">
-            <div><span class="sk-label">🗡️ Остаточное мастерство v2</span><span class="sk-desc">Наносит 50–250% от макс. урона.</span></div>
+            <div><span class="sk-label">🗡️ Остаточное мастерство v2</span><span class="sk-desc">Наносит 50–250% максимальной атаки.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_reflexes">
-            <div><span class="sk-label">🛡️ Запредельные рефлексы</span><span class="sk-desc">С шансом снижает входящий урон на 70%.</span></div>
+            <div><span class="sk-label">🛡️ Запредельные рефлексы</span><span class="sk-desc">35% шанс снизить входящий урон на 70%.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_heal">
-            <div><span class="sk-label">🎶 Лечение</span><span class="sk-desc">Восстанавливает 1/3 от макс. ХП.</span></div>
+            <div><span class="sk-label">🎶 Лечение</span><span class="sk-desc">Восстанавливает треть максимального ХП.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_spores">
-            <div><span class="sk-label">🕸 Паучьи споры</span><span class="sk-desc">Оглушает и атакует дважды (комбо-удар).</span></div>
+            <div><span class="sk-label">🕸 Паучьи споры</span><span class="sk-desc">Оглушает игрока и атакует дважды.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_unfair">
-            <div><span class="sk-label">🧨 Нечестное начало</span><span class="sk-desc">Обнуляет ману или стамину (затраты ХП за навыки ×2 этот ход).</span></div>
+            <div><span class="sk-label">🧨 Нечестное начало</span><span class="sk-desc">Для нового Мученика не удваивает цену навыков: цена уже платится здоровьем.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_field2">
-            <div><span class="sk-label">🧲 Поле 2</span><span class="sk-desc">Снижает удачу на 100 (шанс парирования и блока игрока −20% на 2 хода).</span></div>
+            <div><span class="sk-label">🧲 Поле 2</span><span class="sk-desc">Снижает удачу на 100 на 2 хода.</span></div>
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_defense1">
@@ -213,719 +343,923 @@
           </label>
           <label class="necro-skill-check">
             <input type="checkbox" id="sk_critcrit">
-            <div><span class="sk-label">💥 Критический крит 1</span><span class="sk-desc">20% шанс снять 70% ХП игрока.</span></div>
+            <div><span class="sk-label">💥 Критический крит 1</span><span class="sk-desc">20% шанс снять 70% текущего ХП игрока.</span></div>
           </label>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ПРАВАЯ ЧАСТЬ: БОЙ -->
   <div class="stack">
     <div class="card">
       <div class="badges" id="topBadges">
         <div class="badge" id="roundBadge">Раунд 1</div>
         <div class="badge" id="battleBadge">Бой не начат</div>
-        <div class="badge" id="foreignCdBadge">🩸 Чужая кровь: готова</div>
-        <div class="badge" id="healBadge">💚 Хил прошлый ход: 0</div>
-        <div class="badge" id="totalHealBadge">💉 Всего хила: 0</div>
+        <div class="badge" id="greedCdBadge">Алчность: готова</div>
+        <div class="badge" id="wrathCdBadge">Гнев: готов</div>
+        <div class="badge" id="prideCdBadge">Гордыня: готова</div>
+        <div class="badge" id="purifyCdBadge">Очищение: готово</div>
       </div>
+
       <div class="fight-grid">
         <div class="panel"><div class="subtitle">✦ Мученик</div><div id="playerState" class="mono state-line"></div></div>
         <div class="panel"><div class="subtitle">✦ ☠︎︎ Примарх Некродион</div><div id="enemyState" class="mono state-line"></div></div>
       </div>
+
       <div class="badges" id="statusBadges" style="margin-top:10px"></div>
 
       <h2 class="title" style="margin-top:8px">Лог боя</h2>
       <div class="log" id="log"></div>
+
       <div class="btns" style="margin-top:12px">
         <button type="button" class="b-start" id="btnStart">⚔️ Начало боя</button>
         <button type="button" class="b-reset" id="btnReset">🔄 Сброс</button>
-        <button type="button" class="b-bloody" id="btnBloody" disabled>[ ⚜️ ] Кровавый удар</button>
-        <button type="button" class="b-foreign" id="btnForeign" disabled>[ ⚜️ ] Чужая кровь</button>
-        <button type="button" class="b-catharsis" id="btnCatharsis" disabled>[ ⚜️ ] Катарсис</button>
+        <button type="button" class="b-greed" id="btnGreed" disabled>[ ⚜️ ] Алчная десятина</button>
+        <button type="button" class="b-wrath" id="btnWrath" disabled>[ ⚜️ ] Праведный гнев</button>
+        <button type="button" class="b-pride" id="btnPride" disabled>[ ⚜️ ] Приговор гордыни</button>
+        <button type="button" class="b-purify" id="btnPurify" disabled>[ ⚜️ ] Очищение болью</button>
         <button type="button" class="b-skip" id="btnSkip" disabled>⏭ Пропустить ход</button>
         <button type="button" class="b-potion" id="btnPotion" disabled>🧪 Зелье (×<span id="potionCount">3</span>)</button>
         <button type="button" class="b-sim" id="btnSim10">Прогон ×10</button>
         <button type="button" class="b-sim" id="btnSim50">Прогон ×50</button>
         <button type="button" class="b-sim" id="btnSim200">Прогон ×200</button>
       </div>
+
       <div class="sim-wrap">
         <div class="mini"><div class="k">Прогонов</div><div class="v" id="simRuns">0</div></div>
         <div class="mini"><div class="k">Побед</div><div class="v" id="simWins">0</div></div>
         <div class="mini"><div class="k">Поражений</div><div class="v" id="simLosses">0</div></div>
-        <div class="mini"><div class="k">Ср. раундов</div><div class="v" id="simAvgTurns">0.0</div></div>
-        <div class="mini"><div class="k">Ср. урон Кров. удара</div><div class="v" id="simAvgBloody">0</div></div>
-        <div class="mini"><div class="k">Ср. урон Катарсиса</div><div class="v" id="simAvgCatharsis">0</div></div>
-        <div class="mini"><div class="k">Ср. урон врага/ход</div><div class="v" id="simAvgEnemy">0</div></div>
-        <div class="mini"><div class="k">Ср. реген/ход</div><div class="v" id="simAvgRegen">0</div></div>
+        <div class="mini"><div class="k">Не завершено</div><div class="v" id="simTimeouts">0</div></div>
+        <div class="mini"><div class="k">Среднее число раундов</div><div class="v" id="simAvgTurns">0.0</div></div>
+        <div class="mini"><div class="k">Ср. урон Алчной десятины</div><div class="v" id="simAvgGreed">0</div></div>
+        <div class="mini"><div class="k">Ср. урон Праведного гнева</div><div class="v" id="simAvgWrath">0</div></div>
+        <div class="mini"><div class="k">Ср. урон Приговора гордыни</div><div class="v" id="simAvgPride">0</div></div>
+        <div class="mini"><div class="k">Ср. урон Очищения болью</div><div class="v" id="simAvgPurify">0</div></div>
+        <div class="mini"><div class="k">Ср. урон врага за раунд</div><div class="v" id="simAvgEnemy">0</div></div>
+        <div class="mini"><div class="k">Ср. лечение Мученика за раунд</div><div class="v" id="simAvgHeal">0</div></div>
+        <div class="mini"><div class="k">Среднее число Очищений</div><div class="v" id="simAvgPurifyUses">0.0</div></div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-// ===== ВСПОМОГАТЕЛЬНЫЕ =====
-function round(n){ return Math.max(0,Math.round(n)); }
+function round(n){ return Math.max(0,Math.round(Number(n)||0)); }
 function el(id){ return document.getElementById(id); }
 function clamp(n,a,b){ return Math.max(a,Math.min(b,n)); }
 function pct(cur,max){ return max<=0?0:Math.round(cur/max*100); }
-function bar(cur,max,fill=10){ const n=Math.round((clamp(cur,0,max)/Math.max(max,1))*fill); return '■'.repeat(n)+'□'.repeat(Math.max(0,fill-n)); }
+function bar(cur,max,fill=10){
+  const n=Math.round((clamp(cur,0,max)/Math.max(max,1))*fill);
+  return '■'.repeat(n)+'□'.repeat(Math.max(0,fill-n));
+}
 function escHtml(s){ return String(s).replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])); }
 function rnd(min,max){ return round(min + Math.random()*(max-min)); }
 
-// ===== ФОРМУЛЫ ПЕРСОНАЖА =====
+const SKILL = {
+  greed:  {name:'Алчная десятина', costPct:0.06, cooldown:1, regenPct:0.02, chain:'greed'},
+  wrath:  {name:'Праведный гнев', costPct:0.10, cooldown:2, regenPct:0.04, chain:'wrath'},
+  pride:  {name:'Приговор гордыни', costPct:0.14, cooldown:3, regenPct:0.04, chain:'pride'},
+  purify: {name:'Очищение болью', costPct:0, cooldown:4, regenPct:0, chain:null},
+};
+
+const state = {
+  round:1,
+  battleStarted:false,
+  battleOver:false,
+  playerTurn:false,
+  isSimulating:false,
+  logs:['Песочница готова. Жми «Начало боя».'],
+  player:{},
+  enemy:{},
+  cds:{greed:0,wrath:0,pride:0,purify:0},
+  chains:{greed:0,wrath:0,pride:0},
+  sinner:0,
+  enemyHealLock:0,
+  potions:3,
+  totalHeal:0,
+  activeSkills:{},
+  playerStun:0,
+  playerLuckDebuff:0,
+  sim:{
+    runs:0,wins:0,losses:0,timeouts:0,avgTurns:0,
+    avgGreed:0,avgWrath:0,avgPride:0,avgPurify:0,
+    avgEnemy:0,avgHeal:0,avgPurifyUses:0
+  }
+};
+
 function buildDerived(p){
-  p.physAtkFinal = Math.max(0, round(p.physAtkBase * (1 + p.painLevel * 0.03)));
-  p.multiplier   = 2 + p.curseLevel * 0.015;
+  p.physAtkFinal = Math.max(0,round(p.physAtkBase*(1+p.vowLevel*0.01)));
+  p.purifyBonus = Math.max(0,p.chainsLevel*0.002);
+  p.critChance = clamp(p.critChance||0,0,1);
+  p.critDamagePct = clamp(p.critDamagePct||130,130,1000);
+  p.critMultiplier = p.critDamagePct/100;
   return p;
 }
 
-function regenPercent(hpFrac){
-  const f = clamp(hpFrac, 0, 1);
-  return 0.05 + Math.pow(f, 2) * 0.50;
+function getSk(id){
+  const c=el('sk_'+id);
+  return c?c.checked:false;
 }
-
-// Читаем активные умения Некродиона
-function getSk(id){ const c = el('sk_'+id); return c ? c.checked : false; }
-
-// ===== STATE =====
-const state = {
-  round: 1,
-  battleStarted: false,
-  battleOver: false,
-  playerTurn: false,
-  isSimulating: false,
-  logs: ['Песочница готова. Жми «Начало боя».'],
-  sim: {runs:0,wins:0,losses:0,avgTurns:0,avgBloody:0,avgCatharsis:0,avgEnemy:0,avgRegen:0},
-  player: {},
-  enemy: {},
-  cds: { foreign: 0 },
-  lastHealAmount: 0,
-  totalHealAmount: 0,
-  potions: 3,
-  // Snapshot активных умений на момент старта боя
-  activeSkills: {},
-  // Временные эффекты
-  playerLuckDebuff: 0,   // ходов действия Поля 2
-  playerCostDouble: false, // Нечестное начало
-};
-
 function snapshotSkills(){
-  const ids = ['bone','block','suppress','humiliate','parry','defense3','ignore','fleshabs',
-                'thunder','whirl','masteryv2','reflexes','heal','spores','unfair','field2','defense1','critcrit'];
-  const snap = {};
-  ids.forEach(id => snap[id] = getSk(id));
-  return snap;
+  const ids=['bone','block','suppress','humiliate','parry','defense3','ignore','fleshabs',
+             'thunder','whirl','masteryv2','reflexes','heal','spores','unfair','field2',
+             'defense1','critcrit'];
+  const out={};
+  ids.forEach(id=>out[id]=getSk(id));
+  return out;
 }
-
 function sk(id){ return !!state.activeSkills[id]; }
 
 function readInputsToState(reset=false){
-  const pp = state.player || {}, pe = state.enemy || {};
-  const p = {
-    maxHp:       +el('pMaxHp').value,
-    physAtkBase: +el('pPhysAtk').value,
-    curseLevel:  +el('pCurseLevel').value,
-    painLevel:   +el('pPainLevel').value,
-    hp:    reset ? +el('pMaxHp').value : clamp(pp.hp  ?? +el('pMaxHp').value, 0, +el('pMaxHp').value),
-    shield: reset ? 0 : (pp.shield || 0),
-  };
-  state.player = buildDerived(p);
+  const oldP=state.player||{}, oldE=state.enemy||{};
+  const maxHp=Math.max(1,+el('pMaxHp').value||1);
+  state.player=buildDerived({
+    maxHp,
+    hp:reset?maxHp:clamp(oldP.hp??maxHp,0,maxHp),
+    physAtkBase:Math.max(0,+el('pPhysAtk').value||0),
+    vowLevel:Math.max(0,+el('pVowLevel').value||0),
+    chainsLevel:Math.max(0,+el('pChainsLevel').value||0),
+    critChance:clamp((+el('pCritChance').value||0)/100,0,1),
+    critDamagePct:clamp(+el('pCritDamage').value||130,130,1000),
+  });
 
-  const atkMin = +el('eAtkMin').value || 0;
-  const atkMax = +el('eAtkMax').value || 0;
-  const atkType = el('eAtkType') ? el('eAtkType').value : 'phys';
-
-  state.enemy = {
-    maxHp:   +el('eMaxHp').value,
-    hp:      reset ? +el('eMaxHp').value : clamp(pe.hp ?? +el('eMaxHp').value, 0, +el('eMaxHp').value),
-    atkMin:  Math.min(atkMin, atkMax),
-    atkMax:  Math.max(atkMin, atkMax),
-    atkType: atkType,
-    magAtk:  Math.max(atkMin, atkMax),
-    physDef: +el('ePhysDef').value,
-    magDef:  +el('eMagDef').value,
-    shield:  reset ? 0 : (pe.shield || 0),
-    stun:    reset ? 0 : (pe.stun   || 0),
-    blockReady: reset ? false : !!pe.blockReady,
-    healCd:  reset ? 0 : (pe.healCd || 0),
+  const eMaxHp=Math.max(1,+el('eMaxHp').value||1);
+  const atkMin=Math.max(0,+el('eAtkMin').value||0);
+  const atkMax=Math.max(0,+el('eAtkMax').value||0);
+  state.enemy={
+    maxHp:eMaxHp,
+    hp:reset?eMaxHp:clamp(oldE.hp??eMaxHp,0,eMaxHp),
+    armor:Math.max(0,+el('eArmor').value||0),
+    atkMin:Math.min(atkMin,atkMax),
+    atkMax:Math.max(atkMin,atkMax),
+    atkType:el('eAtkType').value,
+    stun:reset?0:(oldE.stun||0),
+    blockReady:reset?false:!!oldE.blockReady,
+    healCd:reset?0:(oldE.healCd||0),
   };
+
   if(reset){
-    state.cds.foreign = 0;
-    state.lastHealAmount  = 0;
-    state.totalHealAmount = 0;
-    state.playerLuckDebuff = 0;
-    state.playerCostDouble = false;
-    state.activeSkills = snapshotSkills();
+    state.cds={greed:0,wrath:0,pride:0,purify:0};
+    state.chains={greed:0,wrath:0,pride:0};
+    state.sinner=0;
+    state.enemyHealLock=0;
+    state.playerStun=0;
+    state.playerLuckDebuff=0;
+    state.totalHeal=0;
+    state.activeSkills=snapshotSkills();
   }
 }
 
-// ===== БОЕВЫЕ ФУНКЦИИ =====
-function pureDmg(target, amt){
-  const d = Math.max(0, round(amt));
-  target.hp = clamp(target.hp - d, 0, target.maxHp);
-  return d;
+function spendSkillCost(kind,logs){
+  const data=SKILL[kind];
+  const cost=round(state.player.maxHp*data.costPct);
+  if(state.player.hp-cost<1){
+    logs.push('❌ '+data.name+': нужно '+cost+' ХП, но Обет страдания запрещает опустить здоровье ниже 1.');
+    return {ok:false,cost};
+  }
+  state.player.hp-=cost;
+  if(cost>0) logs.push('❤ Цена навыка: −'+cost+' ХП ('+Math.round(data.costPct*100)+'% максимального).');
+  return {ok:true,cost};
 }
 
-function dmgWithShield(target, amt){
-  const abs = Math.min(target.shield || 0, amt);
-  target.shield = Math.max(0, (target.shield || 0) - abs);
-  const rest = Math.max(0, amt - abs);
-  target.hp = clamp(target.hp - rest, 0, target.maxHp);
-  return { absorbed: abs, dealtToHp: rest, total: abs + rest };
-}
-
-// Урон Мученика — всегда игнорирует броню (Дар проклятия)
-function dealDmgToEnemy(rawAmt, logs, ignoreBlock=false){
-  // Защита 3: не более 50% макс.ХП за удар
-  if(sk('defense3')){
-    const cap = round(state.enemy.maxHp * 0.50);
-    if(rawAmt > cap){
-      logs.push('🛡️ Защита 3: урон срезан с ' + rawAmt + ' до ' + cap + ' (50% макс.ХП)');
-      rawAmt = cap;
-    }
-  }
-  // Запредельные рефлексы: с шансом −70% входящего
-  if(sk('reflexes') && Math.random() < 0.35){
-    const before = rawAmt;
-    rawAmt = round(rawAmt * 0.30);
-    logs.push('🛡️ Запредельные рефлексы: урон снижен с ' + before + ' до ' + rawAmt);
-  }
-  // Защита (30% / −70%)
-  if(sk('defense1') && Math.random() < 0.30){
-    const before = rawAmt;
-    rawAmt = round(rawAmt * 0.30);
-    logs.push('🛡️ Защита: урон снижен с ' + before + ' до ' + rawAmt);
-  }
-  // Блок
-  if(!ignoreBlock && sk('block') && state.enemy.blockReady){
-    state.enemy.blockReady = false;
-    logs.push('🛡️ Блок: Некродион полностью заблокировал урон.');
-    return 0;
-  }
-  // Дар проклятия: игнорирует щиты и броню полностью
-  return pureDmg(state.enemy, rawAmt);
-}
-
-// Хил игрока
-function healPlayer(amt, logs, prefix='💚 Регенерация: +'){
-  const before = state.player.hp;
-  state.player.hp = Math.min(state.player.maxHp, state.player.hp + round(amt));
-  const actual = state.player.hp - before;
-  if(actual > 0){
-    state.lastHealAmount  += actual;
-    state.totalHealAmount += actual;
-    logs.push(prefix + actual + ' ХП.');
+function healPlayer(amount,logs,prefix='💚 Восстановление: +'){
+  const before=state.player.hp;
+  state.player.hp=Math.min(state.player.maxHp,state.player.hp+round(amount));
+  const actual=state.player.hp-before;
+  if(actual>0){
+    state.totalHeal+=actual;
+    logs.push(prefix+actual+' ХП.');
   }
   return actual;
 }
 
-function prepareBlock(){
-  if(sk('block')) state.enemy.blockReady = Math.random() < 0.30;
+function healEnemy(amount,logs,label){
+  if(state.enemyHealLock>0){
+    if(logs) logs.push('⛓️ '+label+': лечение запрещено эффектом «Грешник».');
+    return 0;
+  }
+  const before=state.enemy.hp;
+  state.enemy.hp=Math.min(state.enemy.maxHp,state.enemy.hp+round(amount));
+  const actual=state.enemy.hp-before;
+  if(actual>0 && logs) logs.push(label+': +'+actual+' ХП.');
+  return actual;
 }
 
-function enemyBoneGather(){
-  if(!sk('bone')) return null;
-  if(state.enemy.hp <= 0 || state.enemy.hp >= state.enemy.maxHp) return null;
-  if(Math.random() >= 0.25) return null;
-  const heal = round((state.enemy.maxHp - state.enemy.hp) * 0.20);
-  const b = state.enemy.hp;
-  state.enemy.hp = Math.min(state.enemy.maxHp, state.enemy.hp + heal);
-  const actual = state.enemy.hp - b;
-  return actual > 0 ? '💀 Сбор костей: +' + actual + ' ХП' : null;
+function armorDamage(raw,ignoreArmorFraction=0,logs=null){
+  const incoming=Math.max(0,round(raw));
+  const effectiveArmor=Math.max(0,state.enemy.armor*(1-clamp(ignoreArmorFraction,0,1)));
+  if(incoming<=0 || effectiveArmor<=0) return incoming;
+
+  const minRoll=round(effectiveArmor*0.30);
+  const maxRoll=round(effectiveArmor);
+  const armorRoll=rnd(Math.min(minRoll,maxRoll),Math.max(minRoll,maxRoll));
+  const absorbed=Math.min(incoming,armorRoll);
+  const result=Math.max(0,incoming-absorbed);
+
+  if(logs){
+    const ignoreText=ignoreArmorFraction>0
+      ? ' после игнора '+Math.round(ignoreArmorFraction*100)+'% брони'
+      : '';
+    logs.push('  🪖 Броня поглотила '+absorbed+' урона: бросок '+armorRoll+' из '+minRoll+'–'+maxRoll+ignoreText+'.');
+  }
+  return result;
 }
 
-// Случайная атака в диапазоне
-function rollEnemyBaseAtk(){
-  return rnd(state.enemy.atkMin, state.enemy.atkMax);
+function applyEnemyDefenses(raw,logs,options={}){
+  let value=Math.max(0,round(raw));
+  if(sk('defense3')){
+    const cap=round(state.enemy.maxHp*0.50);
+    if(value>cap){
+      logs.push('🛡️ Защита 3: удар ограничен '+cap+' урона.');
+      value=cap;
+    }
+  }
+  if(sk('reflexes') && Math.random()<0.35){
+    const before=value;
+    value=round(value*0.30);
+    logs.push('🛡️ Запредельные рефлексы: '+before+' → '+value+'.');
+  }
+  if(sk('defense1') && Math.random()<0.30){
+    const before=value;
+    value=round(value*0.30);
+    logs.push('🛡️ Защита: '+before+' → '+value+'.');
+  }
+  const afterArmor=options.ignoreArmorAll?value:armorDamage(value,options.ignoreArmorFraction||0,logs);
+  return afterArmor;
+}
+
+function pureDmg(target,amount){
+  const dealt=Math.min(target.hp,Math.max(0,round(amount)));
+  target.hp=Math.max(0,target.hp-dealt);
+  return dealt;
+}
+
+function prepareEnemyReaction(){
+  state.enemy.blockReady=sk('block') && Math.random()<0.30;
+}
+
+function attackWasStopped(logs){
+  if(sk('parry') && Math.random()<0.25){
+    logs.push('🏃‍♀️ Парирование: Некродион полностью парировал навык. Цена и откат сохраняются.');
+    return true;
+  }
+  if(state.enemy.blockReady){
+    state.enemy.blockReady=false;
+    logs.push('🛡️ Блок: Некродион полностью заблокировал навык.');
+    return true;
+  }
+  return false;
+}
+
+function dealHit(raw,logs,options={}){
+  const reduced=applyEnemyDefenses(raw,logs,options);
+  return pureDmg(state.enemy,reduced);
+}
+
+// Каждый отдельный удар навыка самостоятельно проверяет крит.
+// Критический множитель применяется до брони и защитных реакций Некродиона.
+function resolvePlayerHit(baseRaw,logs,options={}){
+  const base=Math.max(0,round(baseRaw));
+  const isCrit=Math.random()<state.player.critChance;
+  const raw=isCrit?round(base*state.player.critMultiplier):base;
+  const dealt=dealHit(raw,logs,options);
+  return {base,raw,dealt,isCrit};
+}
+
+function playerHitText(hit){
+  if(hit.isCrit){
+    return hit.base+' × '+state.player.critDamagePct+'% = '+hit.raw+' крит. сырого → '+hit.dealt+' урона 💥';
+  }
+  return hit.raw+' сырого → '+hit.dealt+' урона';
+}
+
+function setChain(kind,logs){
+  state.chains[kind]=5;
+  const names={greed:'Алчности',wrath:'Гнева',pride:'Гордыни'};
+  logs.push('⛓️ Наложена Цепь '+names[kind]+' на 5 ходов.');
+  tryCreateSinner(logs);
+}
+
+function tryCreateSinner(logs){
+  if(state.sinner>0) return false;
+  if(state.chains.greed>0 && state.chains.wrath>0 && state.chains.pride>0){
+    state.sinner=2;
+    state.enemyHealLock=1;
+    logs.push('🩸 Все три цепи сомкнулись: наложен «Грешник» на 2 хода.');
+    logs.push('🚫 Некродион не может восстанавливать здоровье до конца своего следующего хода.');
+    return true;
+  }
+  return false;
+}
+
+function clearSinEffects(logs,reason){
+  state.chains={greed:0,wrath:0,pride:0};
+  state.sinner=0;
+  if(logs) logs.push('⛓️ '+reason+' Все цепи и «Грешник» сняты.');
+}
+
+function activeChainRegenPct(){
+  return Object.keys(state.chains).reduce((sum,kind)=>{
+    return sum+(state.chains[kind]>0?(SKILL[kind].regenPct||0):0);
+  },0);
+}
+
+function applyChainRegen(logs){
+  const pctValue=activeChainRegenPct();
+  if(pctValue<=0 || state.player.hp<=0) return 0;
+  const percentText=(pctValue*100).toFixed(1).replace('.0','');
+  return healPlayer(state.player.maxHp*pctValue,logs,'💚 Регенерация цепей ('+percentText+'%): +');
+}
+
+function useGreed(logs){
+  const cost=spendSkillCost('greed',logs);
+  if(!cost.ok) return {used:false,damage:0,heal:0};
+  state.cds.greed=SKILL.greed.cooldown;
+  prepareEnemyReaction();
+  if(attackWasStopped(logs)) return {used:true,damage:0,heal:0};
+
+  let total=0;
+  for(let i=1;i<=3;i++){
+    const hit=resolvePlayerHit(state.player.physAtkFinal*0.25,logs);
+    total+=hit.dealt;
+    logs.push('  ⚔️ Удар '+i+': '+playerHitText(hit)+'.');
+    if(state.enemy.hp<=0) break;
+  }
+  setChain('greed',logs);
+  logs.push('✅ Алчная десятина нанесла '+total+' урона.');
+  return {used:true,damage:total,heal:0};
+}
+
+function useWrath(logs){
+  const cost=spendSkillCost('wrath',logs);
+  if(!cost.ok) return {used:false,damage:0,heal:0};
+  state.cds.wrath=SKILL.wrath.cooldown;
+  const hadGreed=state.chains.greed>0;
+  prepareEnemyReaction();
+  if(attackWasStopped(logs)) return {used:true,damage:0,heal:0};
+
+  const mainHit=resolvePlayerHit(state.player.physAtkFinal,logs);
+  let total=mainHit.dealt;
+  logs.push('  🔨 Основной удар: '+playerHitText(mainHit)+'.');
+  if(hadGreed && state.enemy.hp>0){
+    const bonusHit=resolvePlayerHit(state.player.physAtkFinal*0.20,logs);
+    total+=bonusHit.dealt;
+    logs.push('  ⛓️ Бонус Цепи Алчности: '+playerHitText(bonusHit)+'.');
+  }
+  setChain('wrath',logs);
+  logs.push('✅ Праведный гнев нанёс '+total+' урона.');
+  return {used:true,damage:total,heal:0};
+}
+
+function usePride(logs){
+  const cost=spendSkillCost('pride',logs);
+  if(!cost.ok) return {used:false,damage:0,heal:0};
+  state.cds.pride=SKILL.pride.cooldown;
+  const hasCombo=state.chains.greed>0 && state.chains.wrath>0;
+  prepareEnemyReaction();
+  if(attackWasStopped(logs)) return {used:true,damage:0,heal:0};
+
+  const mainHit=resolvePlayerHit(state.player.physAtkFinal*1.10,logs,{ignoreArmorFraction:0.50});
+  let total=mainHit.dealt;
+  logs.push('  🗡️ Пробивающий удар: '+playerHitText(mainHit)+' (игнор 50% брони).');
+  if(hasCombo && state.enemy.hp>0){
+    const bonusHit=resolvePlayerHit(state.player.physAtkFinal*0.30,logs,{ignoreArmorFraction:0.50});
+    total+=bonusHit.dealt;
+    logs.push('  ⛓️ Бонус двух цепей: '+playerHitText(bonusHit)+'.');
+  }
+  setChain('pride',logs);
+  logs.push('✅ Приговор гордыни нанёс '+total+' урона.');
+  return {used:true,damage:total,heal:0};
+}
+
+function usePurify(logs){
+  if(state.sinner<=0){
+    logs.push('❌ Очищение болью доступно только против цели с эффектом «Грешник».');
+    return {used:false,damage:0,heal:0};
+  }
+  const cost=spendSkillCost('purify',logs);
+  if(!cost.ok) return {used:false,damage:0,heal:0};
+  state.cds.purify=SKILL.purify.cooldown;
+  prepareEnemyReaction();
+  if(attackWasStopped(logs)) return {used:true,damage:0,heal:0};
+
+  const bonusMult=1+state.player.purifyBonus;
+  let total=0;
+  for(let i=1;i<=3;i++){
+    const hit=resolvePlayerHit(state.player.physAtkFinal*0.45*bonusMult,logs);
+    total+=hit.dealt;
+    logs.push('  ⛓️ Вырывание цепи '+i+': '+playerHitText(hit)+'.');
+    if(state.enemy.hp<=0) break;
+  }
+  if(state.enemy.hp>0){
+    const finalHit=resolvePlayerHit(state.player.physAtkFinal*0.50*bonusMult,logs,{ignoreArmorAll:true});
+    total+=finalHit.dealt;
+    logs.push('  💥 Разрыв ран: '+playerHitText(finalHit)+' (полный игнор брони).');
+  }
+  const heal=healPlayer(state.player.maxHp*0.20,logs,'🩸 Очищение болью: +');
+  clearSinEffects(logs,'Очищение завершено.');
+  logs.push('✅ Очищение болью нанесло '+total+' урона.');
+  return {used:true,damage:total,heal};
+}
+
+function enemyBoneGather(lines){
+  if(!sk('bone')) return false;
+  if(state.enemy.hp<=0 || state.enemy.hp>=state.enemy.maxHp) return false;
+  if(Math.random()>=0.25) return false;
+  const heal=round((state.enemy.maxHp-state.enemy.hp)*0.20);
+  healEnemy(heal,lines,'💀 Сбор костей');
+  return true;
+}
+
+function rollEnemyBaseAtk(){ return rnd(state.enemy.atkMin,state.enemy.atkMax); }
+
+function damagePlayer(amount){
+  const dealt=Math.min(state.player.hp,Math.max(0,round(amount)));
+  state.player.hp=Math.max(0,state.player.hp-dealt);
+  return dealt;
+}
+
+function finishEnemyAction(lines,dealt=0){
+  if(state.enemyHealLock>0) state.enemyHealLock--;
+  return {lines,dealt};
 }
 
 function enemyTurn(){
-  const lines = [];
-  if(state.enemy.hp <= 0) return { lines, dealt: 0 };
+  const lines=[];
+  if(state.enemy.hp<=0) return {lines,dealt:0};
 
-  if(state.enemy.stun > 0){
+  if(state.enemy.stun>0){
     state.enemy.stun--;
-    lines.push('🪨 Некродион: пропускает ход (оглушение)');
-    return { lines, dealt: 0 };
+    lines.push('🪨 Некродион пропускает ход из-за оглушения.');
+    return finishEnemyAction(lines,0);
   }
 
-  // Сбор костей
-  const bone = enemyBoneGather();
-  if(bone) lines.push(bone);
-  if(state.enemy.hp <= 0) return { lines, dealt: 0 };
+  if(state.enemy.healCd>0) state.enemy.healCd--;
 
-  // Убываем откат лечения
-  if(state.enemy.healCd > 0) state.enemy.healCd--;
-
-  let totalDealt = 0;
-
-  // ===== ПРИОРИТЕТНЫЕ УМЕНИЯ =====
-
-  // Громовое копье (всегда приоритет)
-  if(sk('thunder') && Math.random() < 0.25){
-    const dmg = round(state.enemy.magAtk * 3);
-    // Громовое копье игнорирует блок и некоторые механики
-    const d = dmgWithShield(state.player, dmg);
-    totalDealt += d.total;
-    lines.push('⚜ Громовое копье → ' + d.total + ' урона (×3 маг, игнорирует механики)');
-    return { lines, dealt: totalDealt };
+  // За один ход Некродион может совершить только одно активное действие.
+  // Как только одно умение сработало, ход немедленно заканчивается.
+  if(enemyBoneGather(lines)){
+    return finishEnemyAction(lines,0);
   }
 
-  // Паучьи споры
-  if(sk('spores') && Math.random() < 0.15){
-    state.player.stun = (state.player.stun||0) + 1;
-    lines.push('🕸 Паучьи споры: оглушение! Атакует дважды!');
-    for(let i=0;i<2;i++){
-      const raw = rollEnemyBaseAtk();
-      const res = dmgWithShield(state.player, raw);
-      totalDealt += res.total;
-      lines.push('  🕷 Удар ' + (i+1) + ' → ' + res.total + ' урона');
+  if(sk('thunder') && Math.random()<0.25){
+    const dmg=damagePlayer(state.enemy.atkMax*3);
+    lines.push('⚜ Громовое копьё → '+dmg+' урона.');
+    return finishEnemyAction(lines,dmg);
+  }
+
+  if(sk('spores') && Math.random()<0.15){
+    let total=0;
+    state.playerStun+=1;
+    lines.push('🕸 Паучьи споры: Мученик оглушён, Некродион атакует дважды.');
+    for(let i=1;i<=2;i++){
+      const dmg=damagePlayer(rollEnemyBaseAtk());
+      total+=dmg;
+      lines.push('  🕷 Удар '+i+' → '+dmg+' урона.');
+      if(state.player.hp<=0) break;
     }
-    return { lines, dealt: totalDealt };
+    return finishEnemyAction(lines,total);
   }
 
-  // Нечестное начало (обнуляет ресурсы — стоимость навыков ×2 этот ход)
-  if(sk('unfair') && Math.random() < 0.20){
-    state.playerCostDouble = true;
-    lines.push('🧨 Нечестное начало: стамина/мана обнулена! (стоимость умений ×2 этот ход)');
+  if(sk('unfair') && Math.random()<0.20){
+    lines.push('🧨 Нечестное начало: ресурсы обнулены, но Обет страдания всё равно оплачивает навыки здоровьем.');
+    return finishEnemyAction(lines,0);
   }
 
-  // Поле 2
-  if(sk('field2') && Math.random() < 0.20){
-    state.playerLuckDebuff = 2;
-    lines.push('🧲 Поле 2: удача −100! Шанс блока/парирования снижен на 2 хода.');
+  if(sk('field2') && Math.random()<0.20){
+    state.playerLuckDebuff=2;
+    lines.push('🧲 Поле 2: удача Мученика снижена на 2 хода.');
+    return finishEnemyAction(lines,0);
   }
 
-  // Критический крит 1
-  if(sk('critcrit') && Math.random() < 0.20){
-    const dmg = round(state.player.hp * 0.70);
-    state.player.hp = Math.max(0, state.player.hp - dmg);
-    totalDealt += dmg;
-    lines.push('💥 Критический крит 1: снято 70% ХП → ' + dmg + ' урона!');
-    return { lines, dealt: totalDealt };
+  if(sk('critcrit') && Math.random()<0.20){
+    const dmg=damagePlayer(state.player.hp*0.70);
+    lines.push('💥 Критический крит 1: снято 70% текущего ХП → '+dmg+' урона.');
+    return finishEnemyAction(lines,dmg);
   }
 
-  // Лечение
-  if(sk('heal') && state.enemy.healCd === 0 && state.enemy.hp < state.enemy.maxHp * 0.70){
-    const healAmt = round(state.enemy.maxHp / 3);
-    state.enemy.hp = Math.min(state.enemy.maxHp, state.enemy.hp + healAmt);
-    state.enemy.healCd = 5;
-    lines.push('🎶 Лечение: Некродион восстановил ' + healAmt + ' ХП.');
-    return { lines, dealt: 0 };
+  if(sk('heal') && state.enemy.healCd===0 && state.enemy.hp<state.enemy.maxHp*0.70){
+    if(state.enemyHealLock>0){
+      lines.push('🚫 Лечение Некродиона сорвано эффектом «Грешник».');
+    }else{
+      healEnemy(state.enemy.maxHp/3,lines,'🎶 Лечение');
+      state.enemy.healCd=5;
+    }
+    return finishEnemyAction(lines,0);
   }
 
-  // Поглощение плоти
-  if(sk('fleshabs') && Math.random() < 0.20){
-    const pct2 = 1.0 + Math.random() * 2.0; // 100–300%
-    const raw = round(state.enemy.atkMax * pct2);
-    const res = dmgWithShield(state.player, raw);
-    totalDealt += res.total;
-    const vampHeal = res.total;
-    state.enemy.hp = Math.min(state.enemy.maxHp, state.enemy.hp + vampHeal);
-    lines.push('🩸 Поглощение плоти (' + Math.round(pct2*100) + '% макс.атк) → ' + res.total + ' урона, +' + vampHeal + ' ХП вампир');
-    return { lines, dealt: totalDealt };
+  if(sk('fleshabs') && Math.random()<0.20){
+    const mult=1+Math.random()*2;
+    const dmg=damagePlayer(state.enemy.atkMax*mult);
+    lines.push('🩸 Поглощение плоти ('+Math.round(mult*100)+'%) → '+dmg+' урона.');
+    healEnemy(dmg,lines,'🩸 Вампиризм');
+    return finishEnemyAction(lines,dmg);
   }
 
-  // Волчок
-  if(sk('whirl') && Math.random() < 0.20){
-    const dmg = rnd(50, 350);
-    const res = dmgWithShield(state.player, dmg);
-    totalDealt += res.total;
-    lines.push('💨 Волчок → ' + res.total + ' урона (50–350)');
-    return { lines, dealt: totalDealt };
+  if(sk('whirl') && Math.random()<0.20){
+    const dmg=damagePlayer(rnd(50,350));
+    lines.push('💨 Волчок → '+dmg+' урона.');
+    return finishEnemyAction(lines,dmg);
   }
 
-  // Остаточное мастерство v2
-  if(sk('masteryv2') && Math.random() < 0.25){
-    const pct2 = 0.50 + Math.random() * 2.0; // 50–250%
-    const raw = round(state.enemy.atkMax * pct2);
-    const res = dmgWithShield(state.player, raw);
-    totalDealt += res.total;
-    lines.push('🗡️ Остаточное мастерство v2 (' + Math.round(pct2*100) + '%) → ' + res.total + ' урона');
-    return { lines, dealt: totalDealt };
+  if(sk('masteryv2') && Math.random()<0.25){
+    const mult=0.5+Math.random()*2;
+    const dmg=damagePlayer(state.enemy.atkMax*mult);
+    lines.push('🗡️ Остаточное мастерство v2 ('+Math.round(mult*100)+'%) → '+dmg+' урона.');
+    return finishEnemyAction(lines,dmg);
   }
 
-  // ===== ОБЫЧНАЯ АТАКА =====
-  let raw = rollEnemyBaseAtk();
-  const isHumiliate = sk('humiliate') && Math.random() < 0.20;
-  if(isHumiliate) raw = round(raw * 3);
-  const atkTypeIcon = state.enemy.atkType === 'mag' ? '✨' : '⚔️';
-  const attackLabel = isHumiliate ? '👊 Некродион: Унижение (×3)' : (atkTypeIcon + ' Некродион: атакует');
-
-  // Игнор — игнорирует защиту (у Мученика 0, но фиксируем в логе)
-  const ignore = sk('ignore');
-
-  const res = dmgWithShield(state.player, raw);
-  let dmgLine = attackLabel + ' [' + state.enemy.atkMin + '–' + state.enemy.atkMax + '] → ' + res.total + ' урона';
-  if(ignore) dmgLine += ' (игнор защиты)';
-  if(res.absorbed > 0) dmgLine += ' (щит поглотил ' + res.absorbed + ')';
-  lines.push(dmgLine);
-  totalDealt += res.total;
-  return { lines, dealt: totalDealt };
+  let raw=rollEnemyBaseAtk();
+  const humiliate=sk('humiliate') && Math.random()<0.20;
+  if(humiliate) raw*=3;
+  const dmg=damagePlayer(raw);
+  const icon=state.enemy.atkType==='mag'?'✨':'⚔️';
+  lines.push((humiliate?'👊 Унижение ×3':icon+' Обычная атака')+' → '+dmg+' урона.'+(sk('ignore')?' (игнор защиты)':''));
+  return finishEnemyAction(lines,dmg);
 }
 
-// ===== ПРИМЕНИТЬ РЕГЕНЕРАЦИЮ =====
-function applyRegen(logs){
-  const hpFrac = state.player.hp / state.player.maxHp;
-  const regenPct = regenPercent(hpFrac);
-  const healAmt = round(state.player.maxHp * regenPct);
-  return healPlayer(healAmt, logs, '🩸 Регенерация (' + Math.round(regenPct * 100) + '%): +');
-}
+function tickDurations(usedKind,createdSinner){
+  Object.keys(state.cds).forEach(kind=>{
+    if(kind!==usedKind && state.cds[kind]>0) state.cds[kind]--;
+  });
 
-// ===== ДЕЙСТВИЯ ИГРОКА =====
+  Object.keys(state.chains).forEach(kind=>{
+    if(kind!==usedKind && state.chains[kind]>0) state.chains[kind]--;
+  });
 
-function getCostMult(){
-  // Нечестное начало удваивает стоимость
-  return state.playerCostDouble ? 2 : 1;
-}
-
-function doBloodyStrike(logs){
-  prepareBlock();
-  const rawDmg = round((state.player.physAtkFinal + state.lastHealAmount)* 1.1 * state.player.multiplier);
-  const costMult = getCostMult();
-  const cost   = round(state.player.hp * 0.20 * costMult);
-  state.player.hp = Math.max(1, state.player.hp - cost);
-  // Парирование
-  if(sk('parry') && Math.random() < 0.25){
-    logs.push('🏃‍♀️ Парирование: Некродион парировал Кровавый удар! Умение откатывается (уже без эффекта).');
-    return 0;
+  if(!createdSinner && state.sinner>0){
+    state.sinner--;
+    if(state.sinner===0){
+      state.chains={greed:0,wrath:0,pride:0};
+      if(!state.isSimulating) appendLogs(['⛓️ Срок «Грешника» истёк. Все цепи исчезли.']);
+    }
   }
-  const dealt  = dealDmgToEnemy(rawDmg, logs);
-  let line = '[ ⚜️ ] Кровавый удар — стоимость: ' + cost + ' ХП' + (costMult>1?' (×2 Нечестное начало!)':'');
-  line += '\n  ⚔️ Урон = (физ.' + state.player.physAtkFinal + ' + хил' + state.lastHealAmount + ') × ' + state.player.multiplier.toFixed(3) + ' = ' + rawDmg;
-  if(dealt < rawDmg) line += ' (Итого урон ' + dealt + ')';
-  line += '\n  ✅ Нанесено: ' + dealt;
-  logs.push(line);
-  return dealt;
+
+  if(state.playerLuckDebuff>0) state.playerLuckDebuff--;
 }
 
-function doForeignBlood(logs){
-  prepareBlock();
-  const rawDmg = round((state.player.physAtkFinal + state.lastHealAmount * 3) * state.player.multiplier);
-  const costMult = getCostMult();
-  const cost   = round(state.player.hp * 0.40 * costMult);
-  state.player.hp = Math.max(1, state.player.hp - cost);
-  state.enemy.stun = 1;
-  if(sk('parry') && Math.random() < 0.25){
-    logs.push('🏃‍♀️ Парирование: Некродион парировал Чужую кровь! Умение уходит в откат.');
-    state.cds.foreign = 4; // откат всё равно идёт
-    return 0;
-  }
-  const dealt = pureDmg(state.enemy, rawDmg);
-  let line = '[ ⚜️ ] Чужая кровь — стоимость: ' + cost + ' ХП' + (costMult>1?' (×2 Нечестное начало!)':'');
-  line += '\n  🩸 Урон = (физ.' + state.player.physAtkFinal + ' + хил×2 ' + (state.lastHealAmount*2) + ') × ' + state.player.multiplier.toFixed(3) + ' = ' + rawDmg;
-  if(dealt < rawDmg) line += ' (срезан умениями Некродиона до ' + dealt + ')';
-  line += '\n  🪨 Некродион оглушён на 1 ход';
-  line += '\n  ✅ Нанесено: ' + dealt;
-  logs.push(line);
-  return dealt;
-}
-
-function doCatharsis(logs){
-  const rawDmg = round(state.totalHealAmount * 6 * state.player.multiplier);
-  const costMult = getCostMult();
-  const cost   = round(state.player.hp * 0.60 * costMult);
-  state.player.hp = Math.max(1, state.player.hp - cost);
-  // Катарсис игнорирует все умения Некродиона — pureDmg напрямую
-  const dealt = pureDmg(state.enemy, rawDmg);
-  let line = '[ ⚜️ ] Катарсис — стоимость: ' + cost + ' ХП' + (costMult>1?' (×2 Нечестное начало!)':'');
-  line += '\n  💥 Урон = накоп.хил ' + state.totalHealAmount + ' × 6 × ' + state.player.multiplier.toFixed(3) + ' = ' + rawDmg;
-  line += '\n  ✅ Нанесено: ' + dealt + ' (игнор всех умений)';
-  logs.push(line);
-  return dealt;
-}
-
-// ===== ОСНОВНОЙ ХОД =====
 function performRound(kind){
   if(!state.battleStarted || state.battleOver || !state.playerTurn) return null;
 
-  let playerDmg = 0, enemyDmg = 0, regenHeal = 0;
-  const parts = [];
-  parts.push('════ Раунд ' + state.round + ' ════');
+  const parts=['════ Раунд '+state.round+' ════'];
+  let playerDamage=0,enemyDamage=0,playerHeal=0,used=false,createdSinner=false;
 
-  const prevLastHeal = state.lastHealAmount;
-  state.lastHealAmount = 0;
-  state.playerCostDouble = false; // сбросим, если остался с прошлого хода
-
-  // --- ХОД ИГРОКА ---
-  if(kind === 'bloody'){
-    state.lastHealAmount = prevLastHeal;
-    const attackLog = [];
-    playerDmg = doBloodyStrike(attackLog);
-    state.lastHealAmount = 0;
-    attackLog.forEach(l => parts.push(l));
-  }
-  else if(kind === 'foreign'){
-    if(state.cds.foreign > 0){
-      appendLogs(['❌ Чужая кровь на откате (' + state.cds.foreign + ' хода).']);
-      if(!state.isSimulating) render(); return null;
-    }
-    state.lastHealAmount = prevLastHeal;
-    const attackLog = [];
-    playerDmg = doForeignBlood(attackLog);
-    state.lastHealAmount = 0;
-    state.cds.foreign = 4;
-    attackLog.forEach(l => parts.push(l));
-  }
-  else if(kind === 'catharsis'){
-    state.lastHealAmount = prevLastHeal;
-    const attackLog = [];
-    playerDmg = doCatharsis(attackLog);
-    state.lastHealAmount = 0;
-    attackLog.forEach(l => parts.push(l));
-  }
-  else if(kind === 'skip'){
-    const pain = round(state.player.hp * 0.10);
-    state.player.hp = Math.max(0, state.player.hp - pain);
-    parts.push('⏭ Пропуск хода — Муки боли отнимают ' + pain + ' ХП (10% текущего)');
-  }
-  else if(kind === 'potion'){
-    if(state.potions <= 0){
-      appendLogs(['❌ Зелья закончились.']);
-      if(!state.isSimulating) render(); return null;
-    }
-    const healAmt = round(state.player.maxHp * 0.30);
+  if(state.playerStun>0){
+    state.playerStun--;
+    parts.push('🪨 Мученик пропускает действие из-за оглушения.');
+    used=true;
+    kind='stunned';
+  }else if(kind==='greed'){
+    const sinnerBefore=state.sinner;
+    const r=useGreed(parts);
+    used=r.used;playerDamage=r.damage;playerHeal=r.heal;
+    createdSinner=sinnerBefore===0 && state.sinner>0;
+  }else if(kind==='wrath'){
+    if(state.cds.wrath>0){ appendLogs(['❌ Праведный гнев на откате: '+state.cds.wrath+' х.']); if(!state.isSimulating)render(); return null; }
+    const sinnerBefore=state.sinner;
+    const r=useWrath(parts);
+    used=r.used;playerDamage=r.damage;playerHeal=r.heal;
+    createdSinner=sinnerBefore===0 && state.sinner>0;
+  }else if(kind==='pride'){
+    if(state.cds.pride>0){ appendLogs(['❌ Приговор гордыни на откате: '+state.cds.pride+' х.']); if(!state.isSimulating)render(); return null; }
+    const sinnerBefore=state.sinner;
+    const r=usePride(parts);
+    used=r.used;playerDamage=r.damage;playerHeal=r.heal;
+    createdSinner=sinnerBefore===0 && state.sinner>0;
+  }else if(kind==='purify'){
+    if(state.cds.purify>0){ appendLogs(['❌ Очищение болью на откате: '+state.cds.purify+' х.']); if(!state.isSimulating)render(); return null; }
+    const r=usePurify(parts);
+    used=r.used;playerDamage=r.damage;playerHeal=r.heal;
+  }else if(kind==='skip'){
+    parts.push('⏭ Мученик пропускает ход без дополнительной потери здоровья.');
+    used=true;
+  }else if(kind==='potion'){
+    if(state.potions<=0){ appendLogs(['❌ Зелья закончились.']); if(!state.isSimulating)render(); return null; }
     state.potions--;
-    healPlayer(healAmt, parts, '🧪 Зелье здоровья: +');
-    parts.push('  Осталось зелий: ' + state.potions);
+    playerHeal=healPlayer(state.player.maxHp*0.30,parts,'🧪 Зелье здоровья: +');
+    parts.push('  Осталось зелий: '+state.potions+'.');
+    used=true;
   }
 
-  // Проверка гибели от самоурона
-  if(state.player.hp <= 0){
+  if(!used){
     appendLogs([parts.join('\n')]);
-    checkEnd(); if(!state.isSimulating) render();
-    return { playerDamage: playerDmg, enemyDamage: 0, regenHeal: 0, kind };
+    if(!state.isSimulating) render();
+    return null;
   }
 
-  // --- ХОД ВРАГА ---
-  if(state.enemy.hp > 0){
-    const et = enemyTurn();
-    et.lines.forEach(l => parts.push(l));
-    enemyDmg = et.dealt;
+  if(state.enemy.hp>0 && state.player.hp>0){
+    const et=enemyTurn();
+    et.lines.forEach(x=>parts.push(x));
+    enemyDamage=et.dealt;
   }
 
-  // Снижаем дебафф удачи
-  if(state.playerLuckDebuff > 0) state.playerLuckDebuff--;
-
-  // --- РЕГЕНЕРАЦИЯ ---
-  if(state.player.hp > 0){
-    const regenLog = [];
-    regenHeal = applyRegen(regenLog);
-    regenLog.forEach(l => parts.push(l));
+  if(state.player.hp>0){
+    const chainHeal=applyChainRegen(parts);
+    playerHeal+=chainHeal;
   }
 
-  // --- ИТОГ ---
-  const php  = round(state.player.hp), pmhp = round(state.player.maxHp);
-  const ehp  = round(state.enemy.hp),  emhp = round(state.enemy.maxHp);
   parts.push('');
-  parts.push('✦ Мученик: ' + php + '/' + pmhp + ' ХП  |  Хил этого хода: ' + regenHeal + '  |  Накоп.хил: ' + state.totalHealAmount);
-  parts.push('✦ Некродион: ' + ehp + '/' + emhp + ' ХП');
+  parts.push('✦ Мученик: '+round(state.player.hp)+'/'+round(state.player.maxHp)+' ХП');
+  parts.push('✦ Некродион: '+round(state.enemy.hp)+'/'+round(state.enemy.maxHp)+' ХП');
 
-  if(state.cds.foreign > 0) state.cds.foreign--;
+  tickDurations(kind,createdSinner);
   state.round++;
   appendLogs([parts.join('\n')]);
   checkEnd();
   if(!state.isSimulating) render();
-  return { playerDamage: playerDmg, enemyDamage: enemyDmg, regenHeal, kind };
+
+  return {kind,playerDamage,enemyDamage,playerHeal};
 }
 
 function startBattle(silent=false){
   readInputsToState(true);
-  state.round = 1; state.battleStarted = true; state.battleOver = false; state.playerTurn = true;
-  state.potions = 3;
-  state.logs = ['⚔️ Бой начался.'];
-  state.logs.push('🩸 Множитель Дара проклятия: ' + state.player.multiplier.toFixed(3));
-  state.logs.push('⚔️ Атака Некродиона: ' + state.enemy.atkMin + '–' + state.enemy.atkMax);
-  // Активные умения
-  const aktiv = Object.entries(state.activeSkills).filter(([,v])=>v).map(([k])=>k);
-  state.logs.push('🎯 Активных умений Некродиона: ' + aktiv.length);
+  state.round=1;
+  state.battleStarted=true;
+  state.battleOver=false;
+  state.playerTurn=true;
+  state.potions=3;
+  state.logs=['⚔️ Бой начался.'];
+  state.logs.push('💪 Физическая атака: '+state.player.physAtkFinal+' (Обет страдания: +'+state.player.vowLevel+'%).');
+  state.logs.push('💥 Крит: шанс '+(state.player.critChance*100).toFixed(1).replace('.0','')+'%, урон '+state.player.critDamagePct+'%. Каждый удар многократного навыка проверяет крит отдельно.');
+  state.logs.push('⛓️ Бонус урона Очищения: +'+(state.player.purifyBonus*100).toFixed(1).replace('.0','')+'%.');
+  state.logs.push('🪖 Броня Некродиона: '+state.enemy.armor+' (поглощение 30–100% значения на каждый удар).');
 
-  if(Math.random() < 0.5){
-    state.playerTurn = false;
-    const parts = ['════ Стартовый ход врага ════'];
-    const et = enemyTurn();
-    et.lines.forEach(l => parts.push(l));
-    if(state.player.hp > 0){
-      const regenLog = [];
-      applyRegen(regenLog);
-      regenLog.forEach(l => parts.push(l));
-    }
+  if(Math.random()<0.5){
+    state.playerTurn=false;
+    const parts=['════ Стартовый ход врага ════'];
+    const et=enemyTurn();
+    et.lines.forEach(x=>parts.push(x));
     parts.push('');
-    parts.push('✦ Мученик: ' + round(state.player.hp) + '/' + round(state.player.maxHp) + ' ХП');
-    parts.push('✦ Некродион: ' + round(state.enemy.hp) + '/' + round(state.enemy.maxHp) + ' ХП');
-    appendLogs([parts.join('\n')]); checkEnd();
-    if(!state.battleOver) state.playerTurn = true;
-  } else {
+    parts.push('✦ Мученик: '+round(state.player.hp)+'/'+round(state.player.maxHp)+' ХП');
+    parts.push('✦ Некродион: '+round(state.enemy.hp)+'/'+round(state.enemy.maxHp)+' ХП');
+    appendLogs([parts.join('\n')]);
+    checkEnd();
+    if(!state.battleOver) state.playerTurn=true;
+  }else{
     state.logs.push('✨ Первый ход за Мучеником.');
   }
+
   if(!silent && !state.isSimulating) render();
 }
 
 function checkEnd(){
-  if(state.player.hp <= 0 && state.enemy.hp <= 0){ end('☠️ Ничья.'); }
-  else if(state.enemy.hp <= 0){ end('🏆 Некродион повержен! Мученик победил.'); }
-  else if(state.player.hp <= 0){ end('💀 Мученик пал.'); }
+  if(state.player.hp<=0 && state.enemy.hp<=0) end('☠️ Ничья.');
+  else if(state.enemy.hp<=0) end('🏆 Некродион повержен. Мученик победил.');
+  else if(state.player.hp<=0) end('💀 Мученик пал.');
 }
-function end(msg){ state.battleOver = true; state.playerTurn = false; appendLogs([msg]); }
-function appendLogs(arr){ if(state.isSimulating) return; state.logs = [...state.logs, ...arr].slice(-300); }
+function end(message){
+  state.battleOver=true;
+  state.playerTurn=false;
+  appendLogs([message]);
+}
+function appendLogs(items){
+  if(state.isSimulating) return;
+  state.logs=[...state.logs,...items].slice(-350);
+}
 
 function resetBattle(){
-  state.round = 1; state.battleStarted = false; state.battleOver = false; state.playerTurn = false;
-  state.lastHealAmount = 0; state.totalHealAmount = 0;
-  state.playerLuckDebuff = 0; state.playerCostDouble = false;
-  state.potions = 3;
-  state.logs = ['Бой сброшен. Жми «Начало боя».'];
-  state.sim = {runs:0,wins:0,losses:0,avgTurns:0,avgBloody:0,avgCatharsis:0,avgEnemy:0,avgRegen:0};
-  state.activeSkills = snapshotSkills();
-  readInputsToState(true); render();
+  state.round=1;
+  state.battleStarted=false;
+  state.battleOver=false;
+  state.playerTurn=false;
+  state.potions=3;
+  state.logs=['Бой сброшен. Жми «Начало боя».'];
+  state.sim={
+    runs:0,wins:0,losses:0,timeouts:0,avgTurns:0,
+    avgGreed:0,avgWrath:0,avgPride:0,avgPurify:0,
+    avgEnemy:0,avgHeal:0,avgPurifyUses:0
+  };
+  readInputsToState(true);
+  render();
 }
 
-// ===== СИМУЛЯЦИЯ =====
 function snapshotState(){ return JSON.parse(JSON.stringify(state)); }
-function restoreState(snap){ Object.assign(state, JSON.parse(JSON.stringify(snap))); }
+function restoreState(snap){ Object.assign(state,JSON.parse(JSON.stringify(snap))); }
 
-function simulateOneFight(limitRounds){
-  const snap = snapshotState();
-  state.isSimulating = true;
+function chooseSimulationAction(){
+  if(state.sinner>0 && state.cds.purify===0) return 'purify';
+
+  if(state.chains.greed===0 && state.cds.greed===0 && canPay('greed')) return 'greed';
+  if(state.chains.greed>0 && state.chains.wrath===0 && state.cds.wrath===0 && canPay('wrath')) return 'wrath';
+  if(state.chains.greed>0 && state.chains.wrath>0 && state.chains.pride===0 && state.cds.pride===0 && canPay('pride')) return 'pride';
+
+  if(state.cds.pride===0 && canPay('pride')) return 'pride';
+  if(state.cds.wrath===0 && canPay('wrath')) return 'wrath';
+  if(state.cds.greed===0 && canPay('greed')) return 'greed';
+  if(state.potions>0 && state.player.hp<state.player.maxHp*0.35) return 'potion';
+  return 'skip';
+}
+
+function canPay(kind){
+  const cost=round(state.player.maxHp*SKILL[kind].costPct);
+  return state.player.hp-cost>=1;
+}
+
+function simulateOneFight(limitRounds=80){
+  const snap=snapshotState();
+  state.isSimulating=true;
   startBattle(true);
-  let tBloody=0, tCatharsis=0, tEnemy=0, tRegen=0;
-  let bloodyN=0, catN=0, rPlayed=0;
-  while(!state.battleOver && rPlayed < limitRounds){
-    if(!state.playerTurn) break;
-    rPlayed++;
-    let action = 'bloody';
-    if(state.cds.foreign === 0 && rPlayed % 5 === 0) action = 'foreign';
-    if(rPlayed % 15 === 0 && state.totalHealAmount > 0) action = 'catharsis';
 
-    const prevHeal = state.lastHealAmount;
-    state.lastHealAmount = prevHeal;
+  const sums={greed:0,wrath:0,pride:0,purify:0,enemy:0,heal:0};
+  const counts={greed:0,wrath:0,pride:0,purify:0};
+  let rounds=0;
 
-    const r = performRound(action);
+  while(!state.battleOver && rounds<limitRounds){
+    if(!state.playerTurn){
+      state.playerTurn=true;
+    }
+    rounds++;
+    const action=chooseSimulationAction();
+    const r=performRound(action);
     if(!r) break;
-    tEnemy += r.enemyDamage; tRegen += r.regenHeal;
-    if(action === 'bloody'){ tBloody += r.playerDamage; bloodyN++; }
-    if(action === 'catharsis'){ tCatharsis += r.playerDamage; catN++; }
+    if(counts[action]!==undefined){
+      counts[action]++;
+      sums[action]+=r.playerDamage;
+    }
+    sums.enemy+=r.enemyDamage;
+    sums.heal+=r.playerHeal;
   }
-  const result = {
-    win: state.enemy.hp <= 0 && state.player.hp > 0,
-    loss: state.player.hp <= 0,
-    rounds: rPlayed,
-    avgBloody: bloodyN ? tBloody / bloodyN : 0,
-    avgCatharsis: catN ? tCatharsis / catN : 0,
-    avgEnemy: rPlayed ? tEnemy / rPlayed : 0,
-    avgRegen: rPlayed ? tRegen / rPlayed : 0,
+
+  const result={
+    win:state.enemy.hp<=0 && state.player.hp>0,
+    loss:state.player.hp<=0,
+    timeout:!state.battleOver,
+    rounds,
+    avgGreed:counts.greed?sums.greed/counts.greed:0,
+    avgWrath:counts.wrath?sums.wrath/counts.wrath:0,
+    avgPride:counts.pride?sums.pride/counts.pride:0,
+    avgPurify:counts.purify?sums.purify/counts.purify:0,
+    avgEnemy:rounds?sums.enemy/rounds:0,
+    avgHeal:rounds?sums.heal/rounds:0,
+    purifyUses:counts.purify,
   };
-  restoreState(snap); state.isSimulating = false;
+
+  restoreState(snap);
+  state.isSimulating=false;
   return result;
 }
 
-function runSimulation(runs, limitRounds=50){
-  const snap = snapshotState();
-  let wins=0, losses=0, rounds=0, bloody=0, catharsis=0, enemy=0, regen=0;
+function runSimulation(runs,limitRounds=80){
+  const snap=snapshotState();
+  const sum={
+    wins:0,losses:0,timeouts:0,rounds:0,
+    greed:0,wrath:0,pride:0,purify:0,enemy:0,heal:0,purifyUses:0
+  };
   for(let i=0;i<runs;i++){
-    const x = simulateOneFight(limitRounds);
-    wins += x.win?1:0; losses += x.loss?1:0; rounds += x.rounds;
-    bloody += x.avgBloody; catharsis += x.avgCatharsis;
-    enemy += x.avgEnemy; regen += x.avgRegen;
+    const r=simulateOneFight(limitRounds);
+    sum.wins+=r.win?1:0;
+    sum.losses+=r.loss?1:0;
+    sum.timeouts+=r.timeout?1:0;
+    sum.rounds+=r.rounds;
+    sum.greed+=r.avgGreed;
+    sum.wrath+=r.avgWrath;
+    sum.pride+=r.avgPride;
+    sum.purify+=r.avgPurify;
+    sum.enemy+=r.avgEnemy;
+    sum.heal+=r.avgHeal;
+    sum.purifyUses+=r.purifyUses;
   }
   restoreState(snap);
-  state.sim = {
-    runs, wins, losses,
-    avgTurns: rounds / runs,
-    avgBloody: bloody / runs,
-    avgCatharsis: catharsis / runs,
-    avgEnemy: enemy / runs,
-    avgRegen: regen / runs,
+  state.sim={
+    runs,
+    wins:sum.wins,
+    losses:sum.losses,
+    timeouts:sum.timeouts,
+    avgTurns:sum.rounds/runs,
+    avgGreed:sum.greed/runs,
+    avgWrath:sum.wrath/runs,
+    avgPride:sum.pride/runs,
+    avgPurify:sum.purify/runs,
+    avgEnemy:sum.enemy/runs,
+    avgHeal:sum.heal/runs,
+    avgPurifyUses:sum.purifyUses/runs,
   };
   render();
 }
 
-// ===== РЕНДЕР =====
-function render(){
-  readInputsToState(false);
-  const p = state.player, en = state.enemy;
-  const canAct = state.battleStarted && !state.battleOver && state.playerTurn;
-
-  el('roundBadge').textContent = 'Раунд ' + state.round;
-  el('battleBadge').textContent = !state.battleStarted ? 'Бой не начат' : (state.battleOver ? 'Бой завершён' : (state.playerTurn ? 'Твой ход' : 'Ход врага'));
-  el('foreignCdBadge').textContent = state.cds.foreign > 0 ? '🩸 Чужая кровь: ' + state.cds.foreign + ' х.' : '🩸 Чужая кровь: готова';
-  el('healBadge').textContent = '💚 Хил прошл. ход: ' + state.lastHealAmount;
-  el('totalHealBadge').textContent = '💉 Всего хила: ' + state.totalHealAmount;
-
-  const hpFrac = p.maxHp > 0 ? p.hp / p.maxHp : 0;
-  const rp = Math.round(regenPercent(hpFrac) * 100);
-
-  el('calcPhys').textContent = Math.round(p.physAtkFinal);
-  el('calcMult').textContent = p.multiplier ? p.multiplier.toFixed(3) : '0';
-  el('calcRegen').textContent = rp + '%';
-  el('calcTotalHeal').textContent = state.totalHealAmount;
-
-  ['btnBloody','btnForeign','btnCatharsis','btnSkip'].forEach(id=>{
-    if(el(id)) el(id).disabled = !canAct;
-  });
-  if(el('btnForeign') && canAct) el('btnForeign').disabled = state.cds.foreign > 0;
-  if(el('btnPotion') && canAct) el('btnPotion').disabled = state.potions <= 0;
-  if(el('potionCount')) el('potionCount').textContent = state.potions;
-
-  el('playerState').innerHTML = [
-    '┣ ❤ ХП: ' + Math.round(p.hp) + '/' + Math.round(p.maxHp),
-    '┣ <span class="bar">' + bar(p.hp, p.maxHp) + '</span> (' + pct(p.hp, p.maxHp) + '%)',
-    '┣ 🗡 Физ. атака: ' + Math.round(p.physAtkFinal),
-    '┣ ✖️ Множитель: ' + (p.multiplier ? p.multiplier.toFixed(3) : '?'),
-    '┣ 🩸 Реген. этот ход: ~' + rp + '% = ' + round(p.maxHp * regenPercent(hpFrac)),
-    '┣ 💚 Хил прошл. ход: ' + state.lastHealAmount,
-    '┗ 💉 Накоп. хил: ' + state.totalHealAmount,
-  ].join('<br>');
-
-  const efx = [];
-  if(en.stun > 0) efx.push('оглушение');
-  if(en.blockReady) efx.push('блок');
-  el('enemyState').innerHTML = [
-    '┣ 🖤 ХП: ' + Math.round(en.hp) + '/' + Math.round(en.maxHp),
-    '┣ <span class="bar">' + bar(en.hp, en.maxHp) + '</span> (' + pct(en.hp, en.maxHp) + '%)',
-    '┣ 🗡 Атк: ' + Math.round(en.atkMin) + '–' + Math.round(en.atkMax) + ' (' + (en.atkType === 'mag' ? '✨ маг' : '⚔️ физ') + ')',
-    '┣ 🪖 Физ.защ: ' + Math.round(en.physDef) + ' | ✨ Маг.защ: ' + Math.round(en.magDef),
-    '┗ Эффекты: ' + (efx.length ? efx.join(', ') : 'нет'),
-  ].join('<br>');
-
-  const badges = [];
-  if(en.stun > 0) badges.push('<div class="badge">🪨 Враг: оглушён</div>');
-  if(en.blockReady) badges.push('<div class="badge">🛡 Враг: блок готов</div>');
-  if(state.playerLuckDebuff > 0) badges.push('<div class="badge">🧲 Удача −100 ('+state.playerLuckDebuff+' х.)</div>');
-  if(state.playerCostDouble) badges.push('<div class="badge">🧨 Стоимость умений ×2!</div>');
-  el('statusBadges').innerHTML = badges.length ? badges.join('') : '<div class="badge">Эффектов нет</div>';
-
-  const logEl = el('log');
-  logEl.innerHTML = state.logs.map(x => '<div class="entry">' + escHtml(x) + '</div>').join('');
-  logEl.scrollTop = logEl.scrollHeight;
-
-  el('simRuns').textContent = state.sim.runs;
-  el('simWins').textContent = state.sim.wins;
-  el('simLosses').textContent = state.sim.losses;
-  el('simAvgTurns').textContent = state.sim.avgTurns.toFixed(1);
-  el('simAvgBloody').textContent = Math.round(state.sim.avgBloody);
-  el('simAvgCatharsis').textContent = Math.round(state.sim.avgCatharsis);
-  el('simAvgEnemy').textContent = Math.round(state.sim.avgEnemy);
-  el('simAvgRegen').textContent = Math.round(state.sim.avgRegen);
+function cooldownText(label,value){
+  return value>0?label+': '+value+' х.':label+': готово';
 }
 
-// ===== СОБЫТИЯ =====
-['pMaxHp','pPhysAtk','pCurseLevel','pPainLevel','eMaxHp','eAtkMin','eAtkMax','ePhysDef','eMagDef']
-  .forEach(id => { if(el(id)) el(id).addEventListener('input', () => { readInputsToState(false); render(); }); });
-if(el('eAtkType')) el('eAtkType').addEventListener('change', () => { readInputsToState(false); render(); });
+function render(){
+  readInputsToState(false);
+  const p=state.player,en=state.enemy;
+  const canAct=state.battleStarted && !state.battleOver && state.playerTurn;
 
-el('btnStart').addEventListener('click',    e => { e.preventDefault(); startBattle(false); });
-el('btnReset').addEventListener('click',    e => { e.preventDefault(); resetBattle(); });
-el('btnBloody').addEventListener('click',   e => { e.preventDefault(); performRound('bloody'); });
-el('btnForeign').addEventListener('click',  e => { e.preventDefault(); performRound('foreign'); });
-el('btnCatharsis').addEventListener('click',e => { e.preventDefault(); performRound('catharsis'); });
-el('btnSkip').addEventListener('click',     e => { e.preventDefault(); performRound('skip'); });
-el('btnPotion').addEventListener('click',   e => { e.preventDefault(); performRound('potion'); });
-el('btnSim10').addEventListener('click',    e => { e.preventDefault(); runSimulation(10); });
-el('btnSim50').addEventListener('click',    e => { e.preventDefault(); runSimulation(50); });
-el('btnSim200').addEventListener('click',   e => { e.preventDefault(); runSimulation(200); });
+  el('roundBadge').textContent='Раунд '+state.round;
+  el('battleBadge').textContent=!state.battleStarted?'Бой не начат':(state.battleOver?'Бой завершён':'Твой ход');
+  el('greedCdBadge').textContent=state.cds.greed>0?'Алчность: '+state.cds.greed+' х.':'Алчность: готова';
+  el('wrathCdBadge').textContent=state.cds.wrath>0?'Гнев: '+state.cds.wrath+' х.':'Гнев: готов';
+  el('prideCdBadge').textContent=state.cds.pride>0?'Гордыня: '+state.cds.pride+' х.':'Гордыня: готова';
+  el('purifyCdBadge').textContent=state.cds.purify>0?'Очищение: '+state.cds.purify+' х.':'Очищение: готово';
+
+  el('calcPhys').textContent=p.physAtkFinal;
+  el('calcCrit').textContent=(p.critChance*100).toFixed(1).replace('.0','')+'% × '+p.critDamagePct+'%';
+  el('calcPurifyBonus').textContent='+'+(p.purifyBonus*100).toFixed(1).replace('.0','')+'%';
+  el('calcCycleCost').textContent=round(p.maxHp*(0.06+0.10+0.14))+' ХП';
+  el('calcChainRegen').textContent=(activeChainRegenPct()*100).toFixed(1).replace('.0','')+'%';
+  el('calcTotalHeal').textContent=state.totalHeal;
+
+  el('playerState').innerHTML=[
+    '┣ ❤ ХП: '+round(p.hp)+'/'+round(p.maxHp),
+    '┣ <span class="bar">'+bar(p.hp,p.maxHp)+'</span> ('+pct(p.hp,p.maxHp)+'%)',
+    '┣ 🗡 Физ. атака: '+p.physAtkFinal,
+    '┣ 💥 Крит: '+(p.critChance*100).toFixed(1).replace('.0','')+'% шанс, '+p.critDamagePct+'% урон',
+    '┣ 💪 Обет: +'+p.vowLevel+'% силы',
+    '┣ ⛓️ Оковы: +'+(p.purifyBonus*100).toFixed(1).replace('.0','')+'% к Очищению',
+    '┣ 💚 Активный реген цепей: '+(activeChainRegenPct()*100).toFixed(1).replace('.0','')+'% за ход',
+    '┗ 💚 Восстановлено за бой: '+state.totalHeal,
+  ].join('<br>');
+
+  const enemyEffects=[];
+  if(en.stun>0) enemyEffects.push('оглушение');
+  if(state.enemyHealLock>0) enemyEffects.push('запрет лечения');
+  if(state.sinner>0) enemyEffects.push('Грешник '+state.sinner+' х.');
+  el('enemyState').innerHTML=[
+    '┣ 🖤 ХП: '+round(en.hp)+'/'+round(en.maxHp),
+    '┣ <span class="bar">'+bar(en.hp,en.maxHp)+'</span> ('+pct(en.hp,en.maxHp)+'%)',
+    '┣ 🗡 Атака: '+en.atkMin+'–'+en.atkMax+' ('+(en.atkType==='mag'?'✨ маг':'⚔️ физ')+')',
+    '┣ 🪖 Физ. броня: '+en.armor+' (бросок '+round(en.armor*0.30)+'–'+round(en.armor)+')',
+    '┗ Эффекты: '+(enemyEffects.length?enemyEffects.join(', '):'нет'),
+  ].join('<br>');
+
+  const badges=[];
+  if(state.chains.greed>0) badges.push('<div class="badge greed">⛓️ Алчность: '+state.chains.greed+' х.</div>');
+  if(state.chains.wrath>0) badges.push('<div class="badge wrath">⛓️ Гнев: '+state.chains.wrath+' х.</div>');
+  if(state.chains.pride>0) badges.push('<div class="badge pride">⛓️ Гордыня: '+state.chains.pride+' х.</div>');
+  if(activeChainRegenPct()>0) badges.push('<div class="badge">💚 Реген цепей: '+(activeChainRegenPct()*100).toFixed(1).replace('.0','')+'% за ход</div>');
+  if(state.sinner>0) badges.push('<div class="badge sinner">🩸 Грешник: '+state.sinner+' х.</div>');
+  if(state.enemyHealLock>0) badges.push('<div class="badge lock">🚫 Лечение врага запрещено</div>');
+  if(state.playerStun>0) badges.push('<div class="badge">🪨 Мученик оглушён</div>');
+  if(state.playerLuckDebuff>0) badges.push('<div class="badge">🧲 Удача −100: '+state.playerLuckDebuff+' х.</div>');
+  el('statusBadges').innerHTML=badges.length?badges.join(''):'<div class="badge">Цепей и эффектов нет</div>';
+
+  const buttonMap=[
+    ['btnGreed','greed'],
+    ['btnWrath','wrath'],
+    ['btnPride','pride'],
+    ['btnPurify','purify'],
+  ];
+  buttonMap.forEach(([buttonId,kind])=>{
+    const b=el(buttonId);
+    let disabled=!canAct || state.cds[kind]>0;
+    if(kind==='purify') disabled=disabled || state.sinner<=0;
+    else disabled=disabled || !canPay(kind);
+    b.disabled=disabled;
+    if(kind!=='purify'){
+      const cost=round(p.maxHp*SKILL[kind].costPct);
+      b.title=!canPay(kind)?'Недостаточно здоровья: цена '+cost+' ХП':'Цена: '+cost+' ХП';
+    }
+  });
+  el('btnSkip').disabled=!canAct;
+  el('btnPotion').disabled=!canAct || state.potions<=0;
+  el('potionCount').textContent=state.potions;
+
+  const logEl=el('log');
+  logEl.innerHTML=state.logs.map(x=>'<div class="entry">'+escHtml(x)+'</div>').join('');
+  logEl.scrollTop=logEl.scrollHeight;
+
+  el('simRuns').textContent=state.sim.runs;
+  el('simWins').textContent=state.sim.wins;
+  el('simLosses').textContent=state.sim.losses;
+  el('simTimeouts').textContent=state.sim.timeouts;
+  el('simAvgTurns').textContent=state.sim.avgTurns.toFixed(1);
+  el('simAvgGreed').textContent=round(state.sim.avgGreed);
+  el('simAvgWrath').textContent=round(state.sim.avgWrath);
+  el('simAvgPride').textContent=round(state.sim.avgPride);
+  el('simAvgPurify').textContent=round(state.sim.avgPurify);
+  el('simAvgEnemy').textContent=round(state.sim.avgEnemy);
+  el('simAvgHeal').textContent=round(state.sim.avgHeal);
+  el('simAvgPurifyUses').textContent=state.sim.avgPurifyUses.toFixed(1);
+}
+
+['pMaxHp','pPhysAtk','pVowLevel','pChainsLevel','pCritChance','pCritDamage','eMaxHp','eArmor','eAtkMin','eAtkMax']
+  .forEach(id=>{
+    if(el(id)) el(id).addEventListener('input',()=>{readInputsToState(false);render();});
+  });
+el('eAtkType').addEventListener('change',()=>{readInputsToState(false);render();});
+
+// Жёстко удерживаем допустимые пределы критических параметров после завершения ввода.
+el('pCritChance').addEventListener('change',()=>{
+  el('pCritChance').value=clamp(+el('pCritChance').value||0,0,100);
+  readInputsToState(false);render();
+});
+el('pCritDamage').addEventListener('change',()=>{
+  el('pCritDamage').value=clamp(+el('pCritDamage').value||130,130,1000);
+  readInputsToState(false);render();
+});
+
+el('btnStart').addEventListener('click',e=>{e.preventDefault();startBattle(false);});
+el('btnReset').addEventListener('click',e=>{e.preventDefault();resetBattle();});
+el('btnGreed').addEventListener('click',e=>{e.preventDefault();performRound('greed');});
+el('btnWrath').addEventListener('click',e=>{e.preventDefault();performRound('wrath');});
+el('btnPride').addEventListener('click',e=>{e.preventDefault();performRound('pride');});
+el('btnPurify').addEventListener('click',e=>{e.preventDefault();performRound('purify');});
+el('btnSkip').addEventListener('click',e=>{e.preventDefault();performRound('skip');});
+el('btnPotion').addEventListener('click',e=>{e.preventDefault();performRound('potion');});
+el('btnSim10').addEventListener('click',e=>{e.preventDefault();runSimulation(10);});
+el('btnSim50').addEventListener('click',e=>{e.preventDefault();runSimulation(50);});
+el('btnSim200').addEventListener('click',e=>{e.preventDefault();runSimulation(200);});
 
 resetBattle();
 </script>
